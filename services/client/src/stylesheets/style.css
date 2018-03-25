@@ -367,7 +367,7 @@ blockquote p {
 	cursor:pointer;
 	margin-right:40px;
 	position:relative;
-	top:34px;
+	top:30px;
 	font-size:13px;
 	font-weight:600;
 }
@@ -6149,4 +6149,19 @@ header.main-header {
 
 .list-search-input-description{
 	height: 110px;
+}
+
+.item-grid-language img {
+	height: 100px;
+}
+
+.item-grid-meetup {
+	float: left;
+	width: 100%;
+	z-index: 1;
+	height: 100px;
+}
+
+.item-grid-meetup img {
+	height: 100px;
 }

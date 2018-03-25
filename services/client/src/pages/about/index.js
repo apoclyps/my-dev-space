@@ -2,12 +2,10 @@ import React, { Component } from "react";
 
 import Header from "components/layout/header";
 import Footer from "components/layout/footer";
-import FeaturedDevelopers from "./components/featured-developers";
-import FeaturedMeetups from "./components/featured-meetups";
-import FeaturedLanguages from "./components/featured-languages";
 import Question from "./components/question";
+import AboutUs from "./components/aboutus";
 
-class HomePage extends Component {
+class AboutPage extends Component {
     render() {
         const { dispatch, isAuthenticated } = this.props;
 
@@ -19,11 +17,7 @@ class HomePage extends Component {
                     <div id="wrapper">
                         <div className="content">
 
-                            <FeaturedDevelopers />
-
-                            <FeaturedLanguages />
-
-                            <FeaturedMeetups />
+                            <AboutUs />
 
                             <Question />
                         </div>
@@ -40,4 +34,4 @@ class HomePage extends Component {
     }
 }
 
-export default HomePage;
+export default AboutPage;

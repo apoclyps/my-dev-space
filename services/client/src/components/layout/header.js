@@ -161,6 +161,14 @@ class Header extends Component {
                                     </li>
                                     <li>
                                         <Link
+                                            to="/about"
+                                            className="nav-item is-tab"
+                                        >
+                                            How it Works
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
                                             to="/listing"
                                             className="nav-item is-tab"
                                         >
@@ -169,18 +177,10 @@ class Header extends Component {
                                     </li>
                                     <li>
                                         <Link
-                                            to="/listing"
+                                            to="/meetup-listing"
                                             className="nav-item is-tab"
                                         >
                                             Meetups
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link
-                                            to="/listing"
-                                            className="nav-item is-tab"
-                                        >
-                                            How it Works
                                         </Link>
                                     </li>
                                 </ul>
