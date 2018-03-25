@@ -40,5 +40,7 @@ def create_app():
     app.register_blueprint(auth_blueprint)
     from project.api.meetups import meetups_blueprint
     app.register_blueprint(meetups_blueprint)
+    from project.api.meetups_members import meetup_members_blueprint
+    app.register_blueprint(meetup_members_blueprint)
 
     return app
