@@ -5,20 +5,25 @@ import PropTypes from "prop-types";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import HomePage from "pages/home";
-import ListingPage from "pages/listing";
-import MeetupListingPage from "pages/meetup-listing";
-import VenuePage from "pages/developer";
+import DeveloperListingPage from "pages/developers";
+import MeetupListingPage from "pages/meetups";
+import DeveloperPage from "pages/developer";
+import MeetupPage from "pages/meetup";
 import ErrorPage from "pages/404";
 import ProfilePage from "pages/profile";
 import AboutPage from "pages/about";
 
+import ScrollToTop from "components/navigation/scroll-to-top";
+
 class App extends Component {
+
     render() {
         const { isAuthenticated, errorMessage } = this.props;
 
         return (
             <div>
                 <Router>
+                <ScrollToTop>
                     <Switch>
                         <Route
                             exact={true}
@@ -27,17 +32,21 @@ class App extends Component {
                         />
                         <Route
                             exact={true}
-                            path="/listing"
-                            render={props => <ListingPage {...this.props} />}
+                            path="/developers"
+                            render={props => <DeveloperListingPage {...this.props} />}
                         />
                         <Route
                             exact={true}
-                            path="/meetup-listing"
+                            path="/meetups"
                             render={props => <MeetupListingPage {...this.props} />}
                         />
                         <Route
+                            path="/meetup/:id"
+                            render={props => <MeetupPage {...this.props} {...props} />}
+                        />
+                        <Route
                             path="/developer/:id"
-                            render={props => <VenuePage {...this.props} {...props} />}
+                            render={props => <DeveloperPage {...this.props} {...props} />}
                         />
                         <Route
                             path="/profile"
@@ -52,6 +61,7 @@ class App extends Component {
                             render={props => <ErrorPage {...this.props} />}
                         />
                     </Switch>
+                      </ScrollToTop>
                 </Router>
             </div>
         );

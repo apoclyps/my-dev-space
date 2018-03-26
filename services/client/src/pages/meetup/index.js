@@ -5,15 +5,16 @@ import Footer from "components/layout/footer";
 
 import Description from "./components/description";
 import LocationInformation from "./components/location-information";
+
 import Communtity from "components/shared/community";
 
-import {developers} from '../../data';
+import {meetups} from '../../data';
 
-class DeveloperPage extends Component {
+class MeetupPage extends Component {
     render() {
         const { dispatch, isAuthenticated } = this.props;
         const { id } = this.props.match.params;
-        const listing = developers.find(listing => listing.id==id);
+        const listing = meetups.find(listing => listing.id==id);
 
         return (
             <div>
@@ -62,4 +63,4 @@ class DeveloperPage extends Component {
     }
 }
 
-export default DeveloperPage;
+export default MeetupPage;

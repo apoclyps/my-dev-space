@@ -3,7 +3,6 @@ import React, { Component } from "react";
 class LocationInformation extends Component {
 
     render() {
-        console.log(this.props);
         const { image, website } = this.props.listing;
 
         return (
