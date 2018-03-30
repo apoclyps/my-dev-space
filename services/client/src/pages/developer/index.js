@@ -1,36 +1,47 @@
-import React, { Component } from "react";
-import Header from "components/layout/header";
-import Footer from "components/layout/footer";
-import Description from "./components/description";
-import LocationInformation from "./components/location-information";
-import Communtity from "components/shared/community";
-import { developers } from "../../data";
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import Header from 'components/layout/header';
+import Footer from 'components/layout/footer';
+import Description from './components/description';
+import LocationInformation from './components/location-information';
+import Communtity from 'components/shared/community';
+import {developers} from '../../data';
 
 class DeveloperPage extends Component {
+
+  static propTypes = {
+    developers: PropTypes.array.isRequired,
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        id: PropTypes.node,
+      }).isRequired,
+    }).isRequired
+  };
+
   render() {
-    const { id } = this.props.match.params;
-    const developer = developers.find(developer => developer.id === id);
+    const {id} = this.props.match.params;
+    const developer = developers.find(d => d.id === id);
 
     return (
       <div>
-        <div id="main">
+        <div id='main'>
           <Header {...this.props} />
 
-          <div id="wrapper">
-            <div className="content">
-              <section className="gray-section no-top-padding">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-md-4">
-                      <div className="box-widget-wrap">
+          <div id='wrapper'>
+            <div className='content'>
+              <section className='gray-section no-top-padding'>
+                <div className='container'>
+                  <div className='row'>
+                    <div className='col-md-4'>
+                      <div className='box-widget-wrap'>
                         <LocationInformation developer={developer} />
                       </div>
                     </div>
 
-                    <div className="col-md-8">
+                    <div className='col-md-8'>
                       <div
-                        className="list-single-main-wrapper fl-wrap"
-                        id="sec2"
+                        className='list-single-main-wrapper fl-wrap'
+                        id='sec2'
                       >
                         <Description developer={developer} />
                       </div>
@@ -39,7 +50,7 @@ class DeveloperPage extends Component {
                 </div>
               </section>
 
-              <div className="limit-box fl-wrap" />
+              <div className='limit-box fl-wrap' />
 
               <Communtity />
             </div>
@@ -47,8 +58,8 @@ class DeveloperPage extends Component {
 
           <Footer />
 
-          <a className="to-top">
-            <i className="fa fa-angle-up" />
+          <a className='to-top'>
+            <i className='fa fa-angle-up' />
           </a>
         </div>
       </div>

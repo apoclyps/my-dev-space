@@ -1,42 +1,43 @@
-const BASE_URL = "http://localhost:5001/auth/login";
+const BASE_URL = 'http://localhost:5001/auth/login';
 
 function callApi(endpoint, authenticated) {
-  let token = localStorage.getItem("access_token") || null;
+  const token = localStorage.getItem('access_token') || null;
   let config = {};
 
   if (authenticated) {
     if (token) {
       config = {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: {Authorization: `Bearer ${token}`}
       };
     } else {
-      throw new Error("No token saved!");
+      throw new Error('No token saved!');
     }
   }
 
   return fetch(BASE_URL + endpoint, config)
-    .then(response => response.text().then(text => ({ text, response })))
-    .then(({ text, response }) => {
+    .then(response => response.text().then(text => ({text, response})))
+    .then(({text, response}) => {
       if (!response.ok) {
         return Promise.reject(text);
       }
 
       return text;
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log(err)
+  );
 }
 
-export const CALL_API = Symbol("Call API");
+export const CALL_API = Symbol('Call API');
 
 export default store => next => action => {
   const callAPI = action[CALL_API];
 
   // So the middleware doesn't get applied to every single action
-  if (typeof callAPI === "undefined") {
+  if (typeof callAPI === 'undefined') {
     return next(action);
   }
 
-  let { endpoint, types, authenticated } = callAPI;
+  const {endpoint, types, authenticated} = callAPI;
 
   const [successType, errorType] = types;
 
@@ -50,7 +51,7 @@ export default store => next => action => {
       }),
     error =>
       next({
-        error: error.message || "There was an error.",
+        error: error.message || 'There was an error.',
         type: errorType
       })
   );

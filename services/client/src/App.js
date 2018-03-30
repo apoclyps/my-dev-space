@@ -1,21 +1,28 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
-import HomePage from "pages/home";
-import DeveloperListingPage from "pages/developers";
-import MeetupListingPage from "pages/meetups";
-import DeveloperPage from "pages/developer";
-import MeetupPage from "pages/meetup";
-import ErrorPage from "pages/404";
-import ProfilePage from "pages/profile";
-import AboutPage from "pages/about";
+import HomePage from 'pages/home';
+import DeveloperListingPage from 'pages/developers';
+import MeetupListingPage from 'pages/meetups';
+import DeveloperPage from 'pages/developer';
+import MeetupPage from 'pages/meetup';
+import ErrorPage from 'pages/404';
+import ProfilePage from 'pages/profile';
+import AboutPage from 'pages/about';
 
-import ScrollToTop from "components/navigation/scroll-to-top";
+import ScrollToTop from 'components/navigation/scroll-to-top';
 
 class App extends Component {
+
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
+    errorMessage: PropTypes.string.isRequired
+  };
+
   render() {
     return (
       <div>
@@ -23,38 +30,38 @@ class App extends Component {
           <ScrollToTop>
             <Switch>
               <Route
-                exact={true}
-                path="/"
-                render={props => <HomePage {...this.props} />}
+                exact
+                path='/'
+                render={props => <HomePage {...props} />}
               />
               <Route
-                exact={true}
-                path="/developers"
-                render={props => <DeveloperListingPage {...this.props} />}
+                exact
+                path='/developers'
+                render={props => <DeveloperListingPage {...props} />}
               />
               <Route
-                exact={true}
-                path="/meetups"
-                render={props => <MeetupListingPage {...this.props} />}
+                exact
+                path='/meetups'
+                render={props => <MeetupListingPage {...props} />}
               />
               <Route
-                path="/meetup/:id"
-                render={props => <MeetupPage {...this.props} {...props} />}
+                path='/meetup/:id'
+                render={props => <MeetupPage {...props} {...props} />}
               />
               <Route
-                path="/developer/:id"
-                render={props => <DeveloperPage {...this.props} {...props} />}
+                path='/developer/:id'
+                render={props => <DeveloperPage {...props} {...props} />}
               />
               <Route
-                path="/profile"
-                render={props => <ProfilePage {...this.props} />}
+                path='/profile'
+                render={props => <ProfilePage {...props} />}
               />
               <Route
-                exact={true}
-                path="/about"
-                render={props => <AboutPage {...this.props} />}
+                exact
+                path='/about'
+                render={props => <AboutPage {...props} />}
               />
-              <Route render={props => <ErrorPage {...this.props} />} />
+              <Route render={props => <ErrorPage {...props} />} />
             </Switch>
           </ScrollToTop>
         </Router>
@@ -63,19 +70,12 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
-  errorMessage: PropTypes.string
-};
-
 // These props come from the application's
 // state when it is started
 function mapStateToProps(state) {
-  const { auth } = state;
-  const { isAuthenticated, errorMessage } = auth;
+  const {isAuthenticated, errorMessage} = state.auth;
 
-  return { isAuthenticated, errorMessage };
+  return {isAuthenticated, errorMessage};
 }
 
 export default connect(mapStateToProps)(App);

@@ -1,10 +1,10 @@
-import { createStore, applyMiddleware } from "redux";
-import thunkMiddleware from "redux-thunk";
-import api from "middleware/api";
+import {createStore, applyMiddleware} from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import api from 'middleware/api';
 
-import { combineReducers } from "redux";
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE } from "actions/login";
-import { LOGOUT_SUCCESS } from "actions/logout";
+import {combineReducers} from 'redux';
+import {LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE} from 'actions/login';
+import {LOGOUT_SUCCESS} from 'actions/logout';
 
 // The auth reducer. The starting state sets authentication
 // based on a token being in local storage. In a real app,
@@ -12,8 +12,9 @@ import { LOGOUT_SUCCESS } from "actions/logout";
 function auth(
   state = {
     isFetching: false,
-    isAuthenticated: !!localStorage.getItem("access_token"),
-    redirectTo: null
+    isAuthenticated: false,
+    redirectTo: null,
+    errorMessage: ''
   },
   action
 ) {
@@ -23,14 +24,15 @@ function auth(
         isFetching: true,
         isAuthenticated: false,
         user: action.creds,
-        redirectTo: null
+        redirectTo: null,
+        errorMessage: ''
       });
     case LOGIN_SUCCESS:
       return Object.assign({}, state, {
         isFetching: false,
         isAuthenticated: true,
-        errorMessage: "",
-        redirectTo: "/profile"
+        errorMessage: '',
+        redirectTo: '/profile'
       });
     case LOGIN_FAILURE:
       return Object.assign({}, state, {
@@ -43,7 +45,8 @@ function auth(
       return Object.assign({}, state, {
         isFetching: true,
         isAuthenticated: false,
-        redirectTo: "/"
+        redirectTo: '/',
+        errorMessage: ''
       });
     default:
       return state;
@@ -54,10 +57,10 @@ const app = combineReducers({
   auth
 });
 
-let createStoreWithMiddleware = applyMiddleware(thunkMiddleware, api)(
+const createStoreWithMiddleware = applyMiddleware(thunkMiddleware, api)(
   createStore
 );
 
-let store = createStoreWithMiddleware(app);
+const store = createStoreWithMiddleware(app);
 
 export default store;

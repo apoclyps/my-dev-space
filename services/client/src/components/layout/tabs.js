@@ -1,15 +1,16 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-
-// propTypes: {
-//   selected: React.PropTypes.number,
-//   children: React.PropTypes.oneOfType([
-//     React.PropTypes.array,
-//     React.PropTypes.element
-//   ]).isRequired
-// },
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 class Tabs extends Component {
+
+  static propTypes = {
+    children: PropTypes.oneOfType([
+      PropTypes.array,
+      PropTypes.element
+    ]).isRequired
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -19,16 +20,16 @@ class Tabs extends Component {
 
   handleClick(index, event) {
     event.preventDefault();
-    this.setState({ selected: index });
+    this.setState({selected: index});
   }
 
-  _renderTitles() {
+  renderTitles() {
     function labels(child, index) {
-      let activeClass = this.state.selected === index ? "active" : "";
+      const activeClass = this.state.selected === index ? 'active' : '';
       return (
         <li key={index}>
           <Link
-            to="/"
+            to='/'
             className={activeClass}
             onClick={this.handleClick.bind(this, index)}
           >
@@ -38,15 +39,15 @@ class Tabs extends Component {
       );
     }
     return (
-      <ul className="tabs__labels">
+      <ul className='tabs__labels'>
         {this.props.children.map(labels.bind(this))}
       </ul>
     );
   }
 
-  _renderContent() {
+  renderContent() {
     return (
-      <div className="tabs__content">
+      <div className='tabs__content'>
         {this.props.children[this.state.selected]}
       </div>
     );
@@ -54,9 +55,9 @@ class Tabs extends Component {
 
   render() {
     return (
-      <div id="tabs-container">
-        <ul className="tabs-menu">{this._renderTitles()}</ul>
-        <div className="tabs_container">{this._renderContent()}</div>
+      <div id='tabs-container'>
+        <ul className='tabs-menu'>{this.renderTitles()}</ul>
+        <div className='tabs_container'>{this.renderContent()}</div>
       </div>
     );
   }

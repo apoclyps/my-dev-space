@@ -1,31 +1,39 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
+import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 class UserStatus extends Component {
+
+  static propTypes = {
+    isAuthenticated: PropTypes.bool.isRequired
+  };
+
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      id: "",
-      username: "",
-      active: "",
-      admin: ""
+      email: '',
+      id: '',
+      username: '',
+      active: '',
+      admin: ''
     };
   }
+
   componentDidMount() {
     if (this.props.isAuthenticated) {
       this.getUserStatus();
     }
   }
-  getUserStatus(event) {
-    debugger;
-    const accessToken = localStorage.getItem("access_token");
+
+  getUserStatus = (e) => {
+    e.preventDefault();
+    const accessToken = localStorage.getItem('access_token');
     const options = {
       url: `${process.env.REACT_APP_USERS_SERVICE_URL}/auth/status`,
-      method: "get",
+      method: 'get',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`
       }
     };
@@ -42,13 +50,14 @@ class UserStatus extends Component {
       .catch(error => {
         console.log(error);
       });
-  }
+  };
+
   render() {
     if (!this.props.isAuthenticated) {
       return (
         <p>
-          You must be logged in to view this. Click{" "}
-          <Link to="/login">here</Link> to log back in.
+          You must be logged in to view this. Click{' '}
+          <Link to='/login'>here</Link> to log back in.
         </p>
       );
     }
