@@ -1,81 +1,165 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+import React from 'react';
 
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { NOTIFICATION_SYSTEM_STYLE } from 'utils/constants';
 
-import HomePage from 'pages/home';
-import DeveloperListingPage from 'pages/developers';
-import MeetupListingPage from 'pages/meetups';
-import DeveloperPage from 'pages/developer';
-import MeetupPage from 'pages/meetup';
-import ErrorPage from 'pages/404';
-import ProfilePage from 'pages/profile';
-import AboutPage from 'pages/about';
+import componentQueries from 'react-component-queries';
 
-import ScrollToTop from 'components/navigation/scroll-to-top';
+import {
+  // MdCardGiftcard,
+  MdLoyalty,
+  MdImportantDevices,
+} from 'react-icons/lib/md';
+import NotificationSystem from 'react-notification-system';
 
-class App extends Component {
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool.isRequired,
-    errorMessage: PropTypes.string.isRequired
+// layouts
+import { Header, Sidebar, Content } from 'components/Layout';
+
+import GAListener from 'components/GAListener';
+
+// pages
+import DashboardPage from 'pages/DashboardPage';
+import EventPage from 'pages/EventPage';
+import ProjectPage from 'pages/ProjectPage';
+import DeveloperPage from 'pages/DeveloperPage';
+import WidgetPage from 'pages/WidgetPage';
+import ButtonPage from 'pages/ButtonPage';
+import TypographyPage from 'pages/TypographyPage';
+import AlertPage from 'pages/AlertPage';
+import CardPage from 'pages/CardPage';
+
+import './styles/reduction.css';
+
+class App extends React.Component {
+  static isSidebarOpen() {
+    return document
+      .querySelector('.cr-sidebar')
+      .classList.contains('cr-sidebar--open');
+  }
+
+  componentWillReceiveProps({ breakpoint }) {
+    if (breakpoint !== this.props.breakpoint) {
+      this.checkBreakpoint(breakpoint);
+    }
+  }
+
+  componentDidMount() {
+    this.checkBreakpoint(this.props.breakpoint);
+
+    setTimeout(() => {
+      this.notificationSystem.addNotification({
+        title: <MdImportantDevices />,
+        message: 'Welome to Reduction Admin!',
+        level: 'info',
+      });
+    }, 1500);
+
+    setTimeout(() => {
+      this.notificationSystem.addNotification({
+        title: <MdLoyalty />,
+        message:
+          'Reduction is carefully designed template powered by React and Bootstrap4!',
+        level: 'info',
+      });
+    }, 2500);
+  }
+
+  // close sidebar when
+  handleContentClick = event => {
+    // close sidebar if sidebar is open and screen size is less than `md`
+    if (
+      App.isSidebarOpen() &&
+      (this.props.breakpoint === 'xs' ||
+        this.props.breakpoint === 'sm' ||
+        this.props.breakpoint === 'md')
+    ) {
+      this.openSidebar('close');
+    }
   };
+
+  checkBreakpoint(breakpoint) {
+    switch (breakpoint) {
+      case 'xs':
+      case 'sm':
+      case 'md':
+        return this.openSidebar('close');
+
+      case 'lg':
+      case 'xl':
+      default:
+        return this.openSidebar('open');
+    }
+  }
+
+  openSidebar(openOrClose) {
+    if (openOrClose === 'open') {
+      return document
+        .querySelector('.cr-sidebar')
+        .classList.add('cr-sidebar--open');
+    }
+
+    document.querySelector('.cr-sidebar').classList.remove('cr-sidebar--open');
+  }
 
   render() {
     return (
-      <div>
-        <Router>
-          <ScrollToTop>
-            <Switch>
-              <Route
-                exact
-                path='/'
-                render={props => <HomePage {...props} />}
-              />
-              <Route
-                exact
-                path='/developers'
-                render={props => <DeveloperListingPage {...props} />}
-              />
-              <Route
-                exact
-                path='/meetups'
-                render={props => <MeetupListingPage {...props} />}
-              />
-              <Route
-                path='/meetup/:id'
-                render={props => <MeetupPage {...props} {...props} />}
-              />
-              <Route
-                path='/developer/:id'
-                render={props => <DeveloperPage {...props} {...props} />}
-              />
-              <Route
-                path='/profile'
-                render={props => <ProfilePage {...props} />}
-              />
-              <Route
-                exact
-                path='/about'
-                render={props => <AboutPage {...props} />}
-              />
-              <Route render={props => <ErrorPage {...props} />} />
-            </Switch>
-          </ScrollToTop>
-        </Router>
-      </div>
+      <BrowserRouter>
+        <GAListener>
+          <main className="cr-app bg-light">
+            <Sidebar />
+            <Content fluid onClick={this.handleContentClick}>
+              <Header />
+              <Switch>
+                <Route exact path="/" component={DashboardPage} />
+                <Route path="/events" component={EventPage} />
+                <Route path="/projects" component={ProjectPage} />
+                <Route path="/developers" component={DeveloperPage} />
+                <Route path="/buttons" component={ButtonPage} />
+                <Route path="/cards" component={CardPage} />
+                <Route path="/widgets" component={WidgetPage} />
+                <Route path="/typography" component={TypographyPage} />
+                <Route path="/alerts" component={AlertPage} />
+                <Redirect to="/" />
+              </Switch>
+            </Content>
+
+            <NotificationSystem
+              dismissible={false}
+              ref={notificationSystem =>
+                (this.notificationSystem = notificationSystem)
+              }
+              style={NOTIFICATION_SYSTEM_STYLE}
+            />
+          </main>
+        </GAListener>
+      </BrowserRouter>
     );
   }
 }
 
-// These props come from the application's
-// state when it is started
-function mapStateToProps(state) {
-  const {isAuthenticated, errorMessage} = state.auth;
+const query = ({ width }) => {
+  if (width < 575) {
+    return { breakpoint: 'xs' };
+  }
 
-  return {isAuthenticated, errorMessage};
-}
+  if (576 < width && width < 767) {
+    return { breakpoint: 'sm' };
+  }
 
-export default connect(mapStateToProps)(App);
+  if (768 < width && width < 991) {
+    return { breakpoint: 'md' };
+  }
+
+  if (992 < width && width < 1199) {
+    return { breakpoint: 'lg' };
+  }
+
+  if (width > 1200) {
+    return { breakpoint: 'xl' };
+  }
+
+  return { breakpoint: 'xs' };
+};
+
+export default componentQueries(query)(App);

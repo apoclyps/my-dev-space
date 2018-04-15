@@ -1,128 +1,51 @@
 {
-  "name": "my-dev-space-ui",
-  "version": "0.1.0",
+  "name": "react-reduction",
+  "version": "1.0.0",
   "private": true,
-  "optionalDependencies": {
-    "fsevents": "*"
-  },
   "dependencies": {
-    "ajv": "^6.4.0",
-    "autoprefixer": "7.1.2",
-    "axios": "^0.18.0",
-    "case-sensitive-paths-webpack-plugin": "2.1.1",
-    "chainable-check": "^1.0.0",
-    "css-loader": "0.28.4",
-    "dotenv": "4.0.0",
-    "eslint-plugin-babel": "^4.1.2",
-    "file-loader": "0.11.2",
-    "font-awesome": "^4.7.0",
-    "html-webpack-plugin": "2.29.0",
-    "jest": "20.0.4",
-    "jsonwebtoken": "^8.2.0",
-    "moment": "^2.19.1",
-    "object-assign": "4.1.1",
-    "postcss-flexbugs-fixes": "3.2.0",
-    "postcss-loader": "2.0.6",
-    "promise": "8.0.1",
+    "animate.css": "^3.5.2",
+    "bootstrap": "4.0.0",
+    "chart.js": "^2.7.2",
+    "classnames": "^2.2.5",
+    "d3-geo": "^1.9.1",
+    "faker": "^4.1.0",
     "prop-types": "^15.6.0",
-    "query-string": "^5.0.0",
-    "react": "^15.6.2",
-    "react-dev-utils": "^4.0.1",
-    "react-dom": "^15.6.2",
-    "react-fontawesome": "^1.6.1",
-    "react-redux": "^5.0.6",
+    "react": "^16.2.0",
+    "react-chartjs-2": "^2.7.0",
+    "react-component-queries": "^2.2.0",
+    "react-d3-map": "^0.8.3",
+    "react-dom": "^16.2.0",
+    "react-ga": "^2.4.1",
+    "react-icons": "^2.2.7",
+    "react-infinite-calendar": "^2.3.1",
+    "react-notification-system": "^0.2.17",
+    "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "^1.1.1",
-    "react-select": "^1.2.1",
-    "redux": "^3.7.2",
-    "redux-devtools-extension": "^2.13.2",
-    "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.2.0",
-    "underscore": "^1.8.3"
+    "react-simple-maps": "^0.11.2",
+    "react-sizeme": "^2.3.6",
+    "react-transition-group": "^2.2.1",
+    "reactstrap": "^5.0.0-beta.2",
+    "victory": "^0.24.0"
   },
   "devDependencies": {
-    "babel-core": "6.25.0",
-    "babel-eslint": "^7.2.3",
-    "babel-jest": "20.0.3",
-    "babel-loader": "7.1.1",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-react-app": "^3.0.2",
-    "babel-preset-stage-2": "^6.24.1",
-    "babel-runtime": "^6.26.0",    
-    "eslint": "4.16.0",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-config-prettier": "2.9.0",
-    "eslint-loader": "1.9.0",
-    "eslint-plugin-flowtype": "2.35.0",
-    "eslint-plugin-import": "2.8.0",
-    "eslint-plugin-jest": "21.7.0",
-    "eslint-plugin-jsx-a11y": "6.0.3",
-    "eslint-plugin-prettier": "2.5.0",
-    "eslint-plugin-react": "7.5.1",
-    "extract-text-webpack-plugin": "3.0.0",
-    "fs-extra": "^3.0.1",
-    "node-sass": "^4.5.3",
-    "prettier": "1.10.2",
-    "sass-loader": "^6.0.6",
-    "style-loader": "0.18.2",
-    "sw-precache-webpack-plugin": "0.11.4",
-    "url-loader": "0.5.9",
-    "webpack": "^3.5.1",
-    "webpack-dev-server": "2.7.1",
-    "webpack-manifest-plugin": "1.2.1",
-    "whatwg-fetch": "2.0.3"
+    "node-sass-chokidar": "^1.1.0",
+    "npm-run-all": "^4.1.2",
+    "react-scripts": "1.1.1",
+    "serve": "^6.4.1",
+    "stylelint": "^8.2.0",
+    "stylelint-config-recommended-scss": "^2.0.0",
+    "stylelint-config-standard": "^17.0.0",
+    "stylelint-order": "^0.7.0",
+    "stylelint-scss": "^2.1.0"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom",
-    "lint": "eslint --config .eslintrc.json src --ignore-path eslint-ignore-test.txt . && prettier \"src/**/*.js\" --list-different",
-    "format": "prettier \"src/**/*.js\" --write",
-    "dev": "npm run format && npm run lint && npm test"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
-    ],
-    "setupFiles": [
-      "<rootDir>/config/polyfills.js"
-    ],
-    "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.js?(x)",
-      "<rootDir>/src/**/?(*.)(spec|test).js?(x)"
-    ],
-    "testEnvironment": "node",
-    "testURL": "http://localhost",
-    "transform": {
-      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
-    },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
-    ],
-    "moduleNameMapper": {
-      "^react-native$": "react-native-web"
-    },
-    "moduleFileExtensions": [
-      "web.js",
-      "js",
-      "json",
-      "web.jsx",
-      "jsx",
-      "node"
-    ]
-  },
-  "babel": {
-    "presets": [
-      "env",
-      "react"
-    ]
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p start-js",
+    "build": "npm run build-css && react-scripts build",
+    "serve": "serve -s build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }

@@ -1,198 +1,156 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
-import LoginForm from './loginform';
-import RegisterForm from './registerform';
-import {logoutUser} from 'actions/logout';
-import Pane from './pane';
-import Tabs from './tabs';
+import React from 'react';
 
-import logo from 'images/logo.png';
-import Logout from './logout';
+import bn from 'utils/bemnames';
 
-class Header extends Component {
+import {
+  Navbar,
+  // NavbarToggler,
+  Nav,
+  NavItem,
+  NavLink,
+  Popover,
+  PopoverBody,
+  Badge,
+  ListGroup,
+  ListGroupItem,
+  Button,
+} from 'reactstrap';
 
-  static propTypes = {
-    dispatch: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool.isRequired
+import {
+  MdNotificationsActive,
+  MdInsertChart,
+  MdPersonPin,
+  MdMessage,
+  MdSettingsApplications,
+  MdHelp,
+  MdClearAll,
+  MdExitToApp,
+} from 'react-icons/lib/md';
+
+import Avatar from 'components/Avatar';
+import { UserCard } from 'components/Card';
+import Notifications from 'components/Notifications';
+import SearchInput from 'components/SearchInput';
+
+import { notificationsData } from 'demos/header';
+
+const bem = bn.create('header');
+
+class Header extends React.Component {
+  state = {
+    isOpenNotificationPopover: false,
+    isOpenUserCardPopover: false,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      show: false,
-      showUserMenu: false
-    };
-  }
-
-  handleSigninClick = e => {
-    e.preventDefault();
+  toggleNotificationPopover = () => {
     this.setState({
-      show: !this.state.show
+      isOpenNotificationPopover: !this.state.isOpenNotificationPopover,
     });
   };
 
-  handleRegisterClick = e => {
-    e.preventDefault();
+  toggleUserCardPopover = () => {
     this.setState({
-      show: !this.state.show
+      isOpenUserCardPopover: !this.state.isOpenUserCardPopover,
     });
   };
 
-  handleUserMenuDropdown = e => {
-    e.preventDefault();
-    this.setState({
-      showUserMenu: !this.state.showUserMenu
-    });
+  handleSidebarControlButton = event => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    document.querySelector('.cr-sidebar').classList.toggle('cr-sidebar--open');
   };
-
-  renderModal() {
-    return (
-      <div className='main-register-wrap modal'>
-        <div className='main-overlay' />
-        <div className='main-register-holder'>
-          <div className='main-register fl-wrap'>
-            <div className='close-reg' onClick={this.handleSigninClick}>
-              <i className='fa fa-times' />
-            </div>
-            <h3>
-              Sign In
-              <span>
-                &nbsp;My Dev <strong>Space</strong>
-              </span>
-            </h3>
-
-            <Tabs id='tabs-container' selected={0}>
-              <Pane label='Login'>
-                <div id='tab-1' className='tab-content'>
-                  <LoginForm {...this.props} />
-                </div>
-              </Pane>
-              <Pane label='Register'>
-                <div id='tab-1' className='tab-content'>
-                  <RegisterForm />
-                </div>
-              </Pane>
-            </Tabs>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  renderSignin() {
-    return (
-      <div>
-        <div
-          className='show-login-form modal-open'
-          onClick={this.handleRegisterClick}
-        >
-          Register
-        </div>
-        <div
-          className='show-reg-form modal-open'
-          onClick={this.handleSigninClick}
-        >
-          <i className='fa fa-sign-in' />Sign In
-        </div>
-      </div>
-    );
-  }
-
-  renderUserMenu() {
-    return (
-      <ul>
-        <li>
-          <Link to='/profile'>Edit profile</Link>
-        </li>
-        <li>
-          <a href='dashboard-add-listing.html'>Add Listing</a>
-        </li>
-        <li>
-          <Link to='/profile'>Bookings</Link>
-        </li>
-        <li>
-          <Link to='/profile'>Reviews</Link>
-        </li>
-        <li>
-          <Logout onLogoutClick={() => dispatch(logoutUser())} />
-        </li>
-      </ul>
-    );
-  }
-
-  renderUser() {
-    const menu = this.state.showUserMenu ? this.renderUserMenu() : null;
-
-    return (
-      <div className='header-user-menu'>
-        <div className='header-user-name' onClick={this.handleUserMenuDropdown}>
-          <Link to='/profile' style={{position: 'initial'}}>
-            <span>
-              <img
-                src='https://scontent-lhr3-1.xx.fbcdn.net/v/t1.0-9/1455115_10153441244790459_1787397019_n.jpg?oh=bc43967651e9dc8288e9b7666ca88dfe&oe=5B4594E3'
-                alt=''
-              />
-            </span>
-          </Link>
-          Hello , Kyle
-        </div>
-
-        {menu}
-      </div>
-    );
-  }
-
-  renderSignInUser() {
-    return this.props.isAuthenticated ? this.renderUser() : this.renderSignin();
-  }
 
   render() {
-    const modal = this.state.show ? this.renderModal() : null;
-
     return (
-      <div>
-        <header className='main-header dark-header fs-header sticky'>
-          <div className='header-inner'>
-            <div className='logo-holder'>
-              <a href='index.html'>
-                <img src={logo} alt='' />
-              </a>
-            </div>
+      <Navbar light expand className={bem.b('bg-white')}>
+        <Nav navbar className="mr-2">
+          <Button outline onClick={this.handleSidebarControlButton}>
+            <MdClearAll size={25} />
+          </Button>
+        </Nav>
+        <Nav navbar>
+          <SearchInput />
+        </Nav>
 
-            {this.renderSignInUser()}
+        <Nav navbar className={bem.e('nav-right')}>
+          <NavItem className="d-inline-flex">
+            <NavLink className="position-relative">
+              <MdNotificationsActive
+                id="Popover1"
+                size={25}
+                className="text-secondary animated swing infinite can-click"
+                onClick={this.toggleNotificationPopover}
+              />
+              <Badge
+                color="primary"
+                className="rounded-circle position-absolute"
+                style={{ top: 5, right: 0 }}
+              >
+                <small>4</small>
+              </Badge>
+            </NavLink>
+            <Popover
+              placement="bottom"
+              isOpen={this.state.isOpenNotificationPopover}
+              toggle={this.toggleNotificationPopover}
+              target="Popover1"
+            >
+              <PopoverBody>
+                <Notifications notificationsData={notificationsData} />
+              </PopoverBody>
+            </Popover>
+          </NavItem>
 
-            <div className='nav-holder main-menu'>
-              <nav>
-                <ul>
-                  <li>
-                    <Link to='/' className='nav-item is-tab'>
-                      Home
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to='/about' className='nav-item is-tab'>
-                      How it Works
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to='/developers' className='nav-item is-tab'>
-                      Developers
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to='/meetups' className='nav-item is-tab'>
-                      Meetups
-                    </Link>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </header>
-
-        {modal}
-      </div>
+          <NavItem>
+            <NavLink>
+              <Avatar
+                id="Popover2"
+                onClick={this.toggleUserCardPopover}
+                className="can-click"
+              />
+            </NavLink>
+            <Popover
+              placement="bottom-end"
+              isOpen={this.state.isOpenUserCardPopover}
+              toggle={this.toggleUserCardPopover}
+              target="Popover2"
+              className="p-0 border-0"
+              style={{ minWidth: 250 }}
+            >
+              <PopoverBody className="p-0 border-light">
+                <UserCard
+                  title="Jane"
+                  subtitle="jane@jane.com"
+                  text="Last updated 3 mins ago"
+                  className="border-light"
+                >
+                  <ListGroup flush>
+                    <ListGroupItem tag="button" action className="border-light">
+                      <MdPersonPin /> Profile
+                    </ListGroupItem>
+                    <ListGroupItem tag="button" action className="border-light">
+                      <MdInsertChart /> Stats
+                    </ListGroupItem>
+                    <ListGroupItem tag="button" action className="border-light">
+                      <MdMessage /> Messages
+                    </ListGroupItem>
+                    <ListGroupItem tag="button" action className="border-light">
+                      <MdSettingsApplications /> Settings
+                    </ListGroupItem>
+                    <ListGroupItem tag="button" action className="border-light">
+                      <MdHelp /> Help
+                    </ListGroupItem>
+                    <ListGroupItem tag="button" action className="border-light">
+                      <MdExitToApp /> Signout
+                    </ListGroupItem>
+                  </ListGroup>
+                </UserCard>
+              </PopoverBody>
+            </Popover>
+          </NavItem>
+        </Nav>
+      </Navbar>
     );
   }
 }
