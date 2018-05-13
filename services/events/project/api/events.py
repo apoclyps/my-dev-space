@@ -1,3 +1,6 @@
+from datetime import datetime
+from datetime import timezone
+
 from sqlalchemy import exc
 from flask import Blueprint, jsonify, request, render_template
 
@@ -53,15 +56,12 @@ def ping_pong():
 
 
 @events_blueprint.route('/events', methods=['POST'])
-def add_event(resp):
+def add_event():
     post_data = request.get_json()
     response_object = {
         'status': 'fail',
         'message': 'Invalid payload.'
     }
-    if not is_admin(resp):
-        response_object['message'] = 'You do not have permission to do that.'
-        return jsonify(response_object), 401
     if not post_data:
         return jsonify(response_object), 400
 
@@ -76,6 +76,10 @@ def add_event(resp):
     try:
         event = Event.query.filter_by(id=id).first()
         if not event:
+            created = int(created) / 1000
+            created = datetime.utcfromtimestamp(
+                created).replace(tzinfo=timezone.utc)
+
             event = Event(
                 id=id,
                 name=name,
@@ -92,7 +96,7 @@ def add_event(resp):
             response_object['message'] = f'{name} was added!'
             return jsonify(response_object), 201
         else:
-            response_object['message'] = 'Sorry. That email already exists.'
+            response_object['message'] = 'Sorry. That id already exists.'
             return jsonify(response_object), 400
     except exc.IntegrityError as e:
         db.session.rollback()

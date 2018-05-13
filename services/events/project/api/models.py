@@ -13,7 +13,7 @@ class Event(db.Model):
     __tablename__ = "events"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), unique=True, nullable=False)
-    created = db.Column(db.Integer(), nullable=False)
+    created = db.Column(db.DateTime, nullable=False)
     status = db.Column(db.String(20), nullable=False)
     photo_url = db.Column(db.String(256), nullable=False)
     event_url = db.Column(db.String(256), nullable=False)
