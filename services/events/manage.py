@@ -1,5 +1,5 @@
-# services/events/manage.py
-
+from datetime import datetime
+from datetime import timezone
 
 import unittest
 import coverage
@@ -65,15 +65,17 @@ def recreate_db():
 @manager.command
 def seed_db():
     """Seeds the database."""
+    created = datetime.utcfromtimestamp(
+        1525290524).replace(tzinfo=timezone.utc)
+
     db.session.add(Event(
         id=1,
         name='Meetup name',
-        created=1234123,
+        created=created,
         status='upcoming',
         photo_url='http://example.com/photo.jpg',
         event_url='http://example.com/id=1',
         description='A description of the meetup'
-
     ))
     db.session.commit()
 
