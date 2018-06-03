@@ -12,12 +12,12 @@ from project import db
 class Event(db.Model):
     __tablename__ = "events"
     id = db.Column(db.String(32), primary_key=True)
-    name = db.Column(db.String(128), unique=True, nullable=False)
+    name = db.Column(db.String(128), nullable=False)
     created = db.Column(db.DateTime, nullable=False)
     status = db.Column(db.String(20), nullable=False)
     photo_url = db.Column(db.String(256), nullable=False)
     event_url = db.Column(db.String(256), nullable=False)
-    description = db.Column(db.String(1024), nullable=False)
+    description = db.Column(db.String(4096), nullable=False)
     group_name = db.Column(db.String(128), nullable=False)
     member_type = db.Column(db.String(128), nullable=False)
     time = db.Column(db.DateTime, nullable=False)
