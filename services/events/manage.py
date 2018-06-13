@@ -66,7 +66,6 @@ def recreate_db():
 def seed_db():
     """Seeds the database."""
     created = datetime.utcfromtimestamp(1525290524).replace(tzinfo=timezone.utc)
-
     time = datetime.utcfromtimestamp(1525290524).replace(tzinfo=timezone.utc)
 
     db.session.add(
