@@ -65,11 +65,7 @@ def recreate_db():
 @manager.command
 def seed_db():
     """Seeds the database."""
-    db.session.add(
-        User(
-            username="user", email="user@test.com", password="password"
-        )
-    )
+    db.session.add(User(username="user", email="user@test.com", password="password"))
     db.session.commit()
 
 
