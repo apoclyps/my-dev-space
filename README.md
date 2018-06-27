@@ -26,23 +26,23 @@ The following steps will checkout the repository, install the dependencies neede
 
 ```bash
 $ git clone https://github.com/apoclyps/my-dev-space
-$ cd my-dev-space/services/client
-$ npm install
-$ cd ../../
+$ cd my-dev-space
 $ docker-compose -f docker-compose-dev.yml up -d
 ```
 
 Once the service is up and running, you will need to manually run the migrations and seed data required to configure the local postgres instance.
 
 ```bash
-$ docker-compose run users-service python manage.py recreate_db
-$ docker-compose run users-service python manage.py seed_db
+$ docker-compose -f docker-compose-dev.yml run users-service python manage.py recreate_db
+$ docker-compose -f docker-compose-dev.yml run users-service python manage.py seed_db
+$ docker-compose -f docker-compose-dev.yml run events-service python manage.py recreate_db
+$ docker-compose -f docker-compose-dev.yml run events-service python manage.py seed_db
 ```
 
 And to tear down the local development stack, simply run:
 
 ```
-$ docker-compose down
+$ docker-compose -f docker-compose-dev.yml down
 ```
 
 ## Running the tests
