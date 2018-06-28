@@ -1,8 +1,8 @@
 # std lib
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # 3rd party
-from sqlalchemy import exc
+from sqlalchemy import exc, and_
 from flask import Blueprint, jsonify, request
 
 # local
@@ -147,10 +147,18 @@ def get_all_events():
     """Get all events"""
 
     current_time = datetime.utcnow()
-    events = Event.query.filter(Event.time > current_time).all()
+    recent_past = current_time - timedelta(hours=6)
+
+    upcoming_events = Event.query.filter(Event.time > current_time).all()
+    recent_events = Event.query.filter(
+        and_(Event.time <= current_time, Event.time >= recent_past)
+    ).all()
 
     response_object = {
         "status": "success",
-        "data": {"events": [event.to_json() for event in events]},
+        "data": {
+            "upcoming_events": [event.to_json() for event in upcoming_events],
+            "recent_events": [event.to_json() for event in recent_events],
+        },
     }
     return jsonify(response_object), 200

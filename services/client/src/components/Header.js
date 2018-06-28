@@ -8,9 +8,7 @@ class Home extends React.Component {
         <div className="mt-1 ml-2">
           <Link className="text-white no-underline" to="/">
             <i className="fa fa-chevron-right fa-3 homepage-icon" alt="" />
-            <span className="homepage-title">
-              Muxer
-            </span>
+            <span className="homepage-title">Muxer</span>
           </Link>
         </div>
         <ul className="list-reset flex flex-wrap mt-1 ml-4">

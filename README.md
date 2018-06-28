@@ -59,11 +59,16 @@ $ docker-compose -f docker-compose-dev.yml run client run client npm test
 $ docker-compose -f docker-compose-dev.yml run users-service python manage.py test
 ```
 
+###### `events-service`
+```bash
+$ docker-compose -f docker-compose-dev.yml run events-service python manage.py test
+```
+
 ### Running linting
 
 ###### `client`
 ```bash
-$ docker-compose -f docker-compose-dev.yml run client npm lint
+$ docker-compose -f docker-compose-dev.yml run client npm run lint
 ```
 
 ###### `users-service`

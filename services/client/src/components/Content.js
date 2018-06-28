@@ -10,30 +10,27 @@ class Content extends React.Component {
     if (!time) return;
 
     const now = moment();
-    var eventTime = moment.utc(time);
-    var formattedEventTime;
+    const eventTime = moment.utc(time);
+    const duration = moment.duration(eventTime.diff(now));
 
-    if (eventTime.isBefore(now)) {
-      formattedEventTime = eventTime.toNow();
-    } else if (eventTime.isAfter(now)) {
-      formattedEventTime = eventTime.fromNow();
-    }
     return (
       <span className="text-grey-light italic">
-        {" "}
-        next event {formattedEventTime}
+        {duration > 0 ? "next" : "last"} event {duration.humanize(true)}
       </span>
     );
   }
 
   renderSource(source) {
-    let eventSourceImage = ""
+    let eventSourceImage = "";
     if (source === "eventbrite") {
-      eventSourceImage = "http://adultandchild.org/wp-content/uploads/2014/08/Eventbrite-Icon.png"
+      eventSourceImage =
+        "http://adultandchild.org/wp-content/uploads/2014/08/Eventbrite-Icon.png";
     } else if (source === "meetup") {
-      eventSourceImage = "https://assets.materialup.com/uploads/30b4082d-3390-44d6-973e-60ca8972f854/preview"
+      eventSourceImage =
+        "https://assets.materialup.com/uploads/30b4082d-3390-44d6-973e-60ca8972f854/preview";
     } else if (source === "nisciencefestival") {
-      eventSourceImage = "https://i2.wp.com/www.belfasttimes.co.uk/wp-content/uploads/2016/02/NISF2016_FINAL.jpg?fit=1181%2C1181"
+      eventSourceImage =
+        "https://i2.wp.com/www.belfasttimes.co.uk/wp-content/uploads/2016/02/NISF2016_FINAL.jpg?fit=1181%2C1181";
     }
 
     if (eventSourceImage !== "") {
@@ -41,7 +38,7 @@ class Content extends React.Component {
         <img
           className="event-content-icon"
           src={eventSourceImage}
-          alt=""
+          alt={`${source} icon`}
         />
       );
     }
@@ -49,7 +46,7 @@ class Content extends React.Component {
     return (
       <i
         className="rounded-full mt-2 fa fa-calendar-o event-content-icon"
-        alt=""
+        alt="Event icon"
       />
     );
   }
@@ -71,7 +68,8 @@ class Content extends React.Component {
     return (
       <div
         id={id}
-        className="bg-white border border-grey-lightest flex p-2 shadow-light hover:shadow"
+        className={`bg-white border-grey-lightest flex p-2 shadow-light hover:shadow ${this
+          .props.className || ""}`}
       >
         <div className="ml-2">{this.renderSource(source)}</div>
         <div className="w-3/4">

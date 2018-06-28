@@ -1,53 +1,80 @@
 import React, { Component } from "react";
 import axios from "axios";
+import _ from "lodash";
+import moment from "moment";
 import CallToActionBanner from "../components/CallToActionBanner";
 import Content from "../components/Content";
 
-import _ from "lodash";
-import moment from "moment";
+const updateEventsList = function(eventsList) {
+  const events = _.map(eventsList, function(item) {
+    return _.extend({}, item, { timestamp: moment(item.time).valueOf() });
+  });
+  return _.orderBy(events, ["timestamp"], ["asc"]);
+};
 
 class Events extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      events: []
-    };
-  }
+  state = {};
 
   componentDidMount() {
     this.getEvents();
   }
 
-  getEvents = e => {
+  getEvents() {
     const options = {
       url: `${process.env.REACT_APP_EVENTS_SERVICE_URL}/events`,
       method: "get"
     };
+
     return axios(options)
-      .then(res => {
-        var events = _.map(res.data.data.events, function(item) {
-          return _.extend({}, item, { timestamp: moment(item.time).valueOf() });
+      .then(({ data }) => {
+        this.setState({
+          upcomingEvents: updateEventsList(data.data.upcoming_events),
+          recentEvents: updateEventsList(data.data.recent_events)
         });
-        var sortedEvents = _.orderBy(events, ["timestamp"], ["asc"]);
-        this.setState({ events: sortedEvents });
       })
       .catch(error => {
         console.log("events error: " + error);
       });
-  };
+  }
 
-  renderEvents() {
-    const events = this.state.events;
-    return events.map(content => {
-      return <Content key={content.id} content={content} />;
-    });
+  renderRecentEvents() {
+    const { recentEvents } = this.state;
+
+    if (!_.isArray(recentEvents)) return <div>Loading...</div>;
+
+    return (
+      <div className="border-t border-l border-r border-yellow-dark">
+        {recentEvents.map(item => (
+          <Content
+            key={item.id}
+            className="bg-yellow-lighter border-b border-yellow-dark"
+            content={item}
+          />
+        ))}
+      </div>
+    );
+  }
+
+  renderUpcomingEvents() {
+    const { upcomingEvents } = this.state;
+
+    if (!_.isArray(upcomingEvents)) return <div>Loading...</div>;
+
+    return (
+      <div>
+        {upcomingEvents.map(item => (
+          <Content key={item.id} className="border" content={item} />
+        ))}
+      </div>
+    );
   }
 
   render() {
     return (
       <div>
         <CallToActionBanner />
-        {this.renderEvents()}
+        {this.renderRecentEvents()}
+        {this.renderUpcomingEvents()}
       </div>
     );
   }
