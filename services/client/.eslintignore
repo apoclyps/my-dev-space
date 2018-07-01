@@ -1,5 +1,4 @@
 **/node_modules/**
 **/dist/**
-
-**/*.js
-!**/*.spec.js
+**/*.spec.js
+**/tailwind.js
