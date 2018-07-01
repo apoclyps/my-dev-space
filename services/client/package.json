@@ -1,40 +1,42 @@
 {
   "name": "my-dev-space",
-  "homepage": "https://github.com/apoclyps/my-dev-space",
   "version": "0.1.0",
-  "private": false,
-  "optionalDependencies": {
-    "fsevents": "*"
-  },
-  "dependencies": {
-    "axios": "^0.18.0",
-    "font-awesome": "^4.7.0",
-    "lodash": "^4.17.10",
-    "moment": "^2.22.2",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-fontawesome": "^1.6.1",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.4"
-  },
+  "private": true,
+  "description": "A developer community for everyone with an interest in Technology & Meetups",
+  "homepage": "http://muxer.co.uk/",
+  "repository": "https://github.com/apoclyps/my-dev-space",
+  "bugs": "https://github.com/apoclyps/my-dev-space/issues",
+  "license": "MIT",
   "scripts": {
     "tailwind:css": "tailwind build src/css/tailwind.src.css -c tailwind.js -o src/css/tailwind.css",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "eslint --config .eslintrc.json src --ignore-path eslint-ignore-test.txt .",
-    "format": "prettier \"src/**/*.js\" --write",
-    "dev": "npm run format && npm run lint"
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "font-awesome": "^4.7.0",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-fontawesome": "^1.6.1",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.4"
   },
   "devDependencies": {
-    "eslint": "^5.0.1",
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.1",
-    "prettier": "^1.13.7",
+    "eslint-plugin-react": "^7.10.0",
+    "prettier": "1.13.7",
     "tailwindcss": "^0.6.1"
   }
 }

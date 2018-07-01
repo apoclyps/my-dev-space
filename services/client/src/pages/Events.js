@@ -6,9 +6,9 @@ import CallToActionBanner from "../components/CallToActionBanner";
 import Content from "../components/Content";
 
 const updateEventsList = function(eventsList) {
-  const events = _.map(eventsList, function(item) {
-    return _.extend({}, item, { timestamp: moment(item.time).valueOf() });
-  });
+  const events = _.map(eventsList, item =>
+    _.extend({}, item, { timestamp: moment(item.time).valueOf() })
+  );
   return _.orderBy(events, ["timestamp"], ["asc"]);
 };
 
@@ -33,7 +33,7 @@ class Events extends Component {
         });
       })
       .catch(error => {
-        console.log("events error: " + error);
+        console.log(`events error: ${error}`); // eslint-disable-line no-console
       });
   }
 
