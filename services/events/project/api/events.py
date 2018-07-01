@@ -1,9 +1,11 @@
+# std lib
 from datetime import datetime
-from datetime import timezone
 
+# 3rd party
 from sqlalchemy import exc
-from flask import Blueprint, jsonify, request, render_template
+from flask import Blueprint, jsonify, request
 
+# local
 from project.api.models import Event
 from project import db
 
@@ -102,10 +104,10 @@ def add_event():
         else:
             response_object["message"] = "Sorry. That id already exists."
             return jsonify(response_object), 202
-    except (exc.IntegrityError, ValueError) as e:
+    except (exc.IntegrityError, ValueError):
         db.session.rollback()
         return jsonify(response_object), 400
-    except exc.IntegrityError as e:
+    except exc.IntegrityError:
         db.session.rollback()
         return jsonify(response_object), 400
 
@@ -129,10 +131,10 @@ def get_single_event(event_id):
                     "photo_url": event.photo_url,
                     "event_url": event.event_url,
                     "description": event.description,
-                    "group_name": group_name,
-                    "member_type": member_type,
-                    "time": time,
-                    "source": source,
+                    "group_name": event.group_name,
+                    "member_type": event.member_type,
+                    "time": event.time,
+                    "source": event.source,
                 },
             }
             return jsonify(response_object), 200
