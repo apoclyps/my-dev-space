@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import _ from "lodash";
 import moment from "moment";
-import CallToActionBanner from "../components/CallToActionBanner";
-import Content from "../components/Content";
+import CallToActionBanner from "components/call-to-action-banner";
+import Event from "components/event";
 
 const updateEventsList = function(eventsList) {
   const events = _.map(eventsList, item =>
@@ -41,15 +41,12 @@ class Events extends Component {
     const { recentEvents } = this.state;
 
     if (!_.isArray(recentEvents)) return <div>Loading...</div>;
+    if (recentEvents.length === 0) return null;
 
     return (
-      <div className="border-t border-l border-r border-yellow-dark">
+      <div className="recent-events">
         {recentEvents.map(item => (
-          <Content
-            key={item.id}
-            className="bg-yellow-lighter border-b border-yellow-dark"
-            content={item}
-          />
+          <Event key={item.id} className="recent-event" content={item} />
         ))}
       </div>
     );
@@ -62,9 +59,7 @@ class Events extends Component {
 
     return (
       <div>
-        {upcomingEvents.map(item => (
-          <Content key={item.id} className="border" content={item} />
-        ))}
+        {upcomingEvents.map(item => <Event key={item.id} content={item} />)}
       </div>
     );
   }

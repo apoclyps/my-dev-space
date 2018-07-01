@@ -9,10 +9,10 @@
   "license": "MIT",
   "scripts": {
     "tailwind:css": "tailwind build src/css/tailwind.src.css -c tailwind.js -o src/css/tailwind.css",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-app-rewired eject",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -25,7 +25,8 @@
     "react-dom": "^16.4.1",
     "react-fontawesome": "^1.6.1",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "styled-jsx": "^2.2.7"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
@@ -37,6 +38,7 @@
     "eslint-plugin-prettier": "^2.6.1",
     "eslint-plugin-react": "^7.10.0",
     "prettier": "1.13.7",
+    "react-app-rewired": "^1.5.2",
     "tailwindcss": "^0.6.1"
   }
 }

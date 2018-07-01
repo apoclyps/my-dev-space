@@ -1,13 +1,48 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-import Events from "./pages/Events";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import "font-awesome/css/font-awesome.min.css";
+import Events from "./pages/events";
+import Header from "./components/header";
+import Footer from "./components/footer";
 
 const App = () => (
   <Router>
-    <div id="event" className="container mx-auto shadow-lg lg:max-w-md">
+    <div className="container">
+      <style jsx global>{`
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: sans-serif;
+          background-color: #f9f9f7;
+        }
+      `}</style>
+      <style jsx>{`
+        .container {
+          box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
+            0 5px 15px 0 rgba(0, 0, 0, 0.08);
+          margin-left: auto;
+          margin-right: auto;
+          width: 100%;
+        }
+
+        @media (min-width: 576px) {
+          .container {
+            max-width: 576px;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .container {
+            max-width: 768px;
+          }
+        }
+
+        @media (min-width: 992px) {
+          .container {
+            max-width: 40rem;
+          }
+        }
+      `}</style>
       <Header />
       <Switch>
         <Route exact path="/" render={props => <Events {...props} />} />
