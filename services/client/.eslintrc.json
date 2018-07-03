@@ -23,11 +23,20 @@
   "settings": {
     "react": {
       "version": "16.4.1"
+    },
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": [
+          "node_modules",
+          "src"
+        ]
+      }
     }
   },
   "rules": {
     "prettier/prettier": "error",
     "func-names": ["error", "as-needed"],
-    "react/jsx-filename-extension": ["error", { "extensions": [".js"] }]
+    "react/jsx-filename-extension": ["error", { "extensions": [".js"] }],
+    "import/prefer-default-export": "off"
   }
 }
