@@ -2,8 +2,7 @@
 
 if [ -z "$TRAVIS_PULL_REQUEST" ] || [ "$TRAVIS_PULL_REQUEST" == "false" ]
 then
-  if [ "$TRAVIS_BRANCH" == "staging" ] || \
-    [ "$TRAVIS_BRANCH" == "production" ]
+  if [ "$TRAVIS_BRANCH" == "staging" ] || [ "$TRAVIS_BRANCH" == "production" ]
   then
     curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 
@@ -21,8 +20,8 @@ then
     export REACT_APP_EVENTS_SERVICE_URL="http://my-dev-space-staging-alb-2128504978.us-east-1.elb.amazonaws.com"
     export SECRET_KEY="$STAGING_SECRET_KEY"
     export NEW_RELIC_LICENSE_KEY="$NEW_RELIC_LICENSE_KEY"
-    export AWS_RDS_EVENTS_URI="$AWS_RDS_EVENTS_STAGING_URI"
-    export AWS_RDS_USERS_URI="$AWS_RDS_USERS_STAGING_URI"
+    export AWS_RDS_EVENTS_STAGING_URI="$AWS_RDS_EVENTS_STAGING_URI"
+    export AWS_RDS_USERS_STAGING_URI="$AWS_RDS_USERS_STAGING_URI"
     cd $USERS_DIR
     docker build -t $USERS:$COMMIT -f Dockerfile-$DOCKER_ENV .
     docker tag $USERS:$COMMIT $REPO/$USERS:$TAG

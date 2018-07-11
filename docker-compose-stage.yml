@@ -6,7 +6,7 @@ services:
     container_name: users-service
     build:
       context: ./services/users
-      dockerfile: Dockerfile-stage
+      dockerfile: Dockerfile-stage-test
     expose:
       - '5000'
     environment:
@@ -34,7 +34,7 @@ services:
     container_name: events-service
     build:
       context: ./services/events
-      dockerfile: Dockerfile-stage
+      dockerfile: Dockerfile-stage-test
     volumes:
       - './services/events:/usr/src/app'
     ports:
