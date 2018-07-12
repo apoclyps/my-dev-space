@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`get-buckets-for should add events to every bucket 1`] = `
+Array [
+  Object {
+    "className": "events-today",
+    "events": Array [
+      Object {
+        "id": "1",
+        "name": "Meetup coming soon",
+        "time": "2017-06-15T22:45:00",
+      },
+    ],
+    "id": "today",
+    "message": "Today",
+  },
+  Object {
+    "className": "events-this-week",
+    "events": Array [
+      Object {
+        "id": "2",
+        "name": "Meetup this week",
+        "time": "2017-06-16T09:45:00",
+      },
+    ],
+    "id": "this-week",
+    "message": "This Week",
+  },
+  Object {
+    "className": "events-in-next-thirty-days",
+    "events": Array [
+      Object {
+        "id": "3",
+        "name": "Meetup next month",
+        "time": "2017-07-13T11:30:00",
+      },
+    ],
+    "id": "in-next-thirty-days",
+    "message": "Next 30 days",
+  },
+  Object {
+    "className": "events-in-next-three-months",
+    "events": Array [
+      Object {
+        "id": "4",
+        "name": "Meetup in a few months",
+        "time": "2017-09-20T19:00:00",
+      },
+    ],
+    "id": "in-next-three-months",
+    "message": "Next 3 months",
+  },
+  Object {
+    "className": "events-in-the-future",
+    "events": Array [
+      Object {
+        "id": "5",
+        "name": "Meetup this year",
+        "time": "2017-11-01T10:47:00",
+      },
+      Object {
+        "id": "6",
+        "name": "Meetup next year",
+        "time": "2018-02-07T14:03:00",
+      },
+    ],
+    "id": "in-the-future",
+    "message": "And beyond...",
+  },
+]
+`;
+
+exports[`get-buckets-for should add events to some buckets 1`] = `
+Array [
+  Object {
+    "className": "events-today",
+    "events": Array [
+      Object {
+        "id": "1",
+        "name": "Meetup coming soon",
+        "time": "2017-06-15T22:45:00",
+      },
+    ],
+    "id": "today",
+    "message": "Today",
+  },
+  Object {
+    "className": "events-this-week",
+    "events": Array [
+      Object {
+        "id": "2",
+        "name": "Meetup this week",
+        "time": "2017-06-16T09:45:00",
+      },
+    ],
+    "id": "this-week",
+    "message": "This Week",
+  },
+  Object {
+    "className": "events-in-next-thirty-days",
+    "events": Array [],
+    "id": "in-next-thirty-days",
+    "message": "Next 30 days",
+  },
+  Object {
+    "className": "events-in-next-three-months",
+    "events": Array [
+      Object {
+        "id": "3",
+        "name": "Meetup this week too",
+        "time": "2017-07-16T11:30:00",
+      },
+      Object {
+        "id": "4",
+        "name": "Meetup in a few months",
+        "time": "2017-09-20T19:00:00",
+      },
+      Object {
+        "id": "5",
+        "name": "Meetup later this year",
+        "time": "2017-09-22T10:47:00",
+      },
+    ],
+    "id": "in-next-three-months",
+    "message": "Next 3 months",
+  },
+  Object {
+    "className": "events-in-the-future",
+    "events": Array [
+      Object {
+        "id": "6",
+        "name": "Meetup next year",
+        "time": "2018-02-07T14:03:00",
+      },
+    ],
+    "id": "in-the-future",
+    "message": "And beyond...",
+  },
+]
+`;
+
+exports[`get-buckets-for should create empty buckets 1`] = `
+Array [
+  Object {
+    "className": "events-today",
+    "events": Array [],
+    "id": "today",
+    "message": "Today",
+  },
+  Object {
+    "className": "events-this-week",
+    "events": Array [],
+    "id": "this-week",
+    "message": "This Week",
+  },
+  Object {
+    "className": "events-in-next-thirty-days",
+    "events": Array [],
+    "id": "in-next-thirty-days",
+    "message": "Next 30 days",
+  },
+  Object {
+    "className": "events-in-next-three-months",
+    "events": Array [],
+    "id": "in-next-three-months",
+    "message": "Next 3 months",
+  },
+  Object {
+    "className": "events-in-the-future",
+    "events": Array [],
+    "id": "in-the-future",
+    "message": "And beyond...",
+  },
+]
+`;

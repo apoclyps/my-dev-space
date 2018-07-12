@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`event-separator renders 1`] = `
+<EventSeparator
+  className=""
+  content="Test Content"
+  id="test-id"
+/>
+`;

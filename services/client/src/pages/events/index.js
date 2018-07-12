@@ -5,6 +5,9 @@ import moment from "moment";
 import CallToActionBanner from "components/call-to-action-banner";
 import Spinner from "components/spinner/loading";
 import Event from "components/event";
+import NoEvents from "components/no-events";
+import EventSeparator from "components/event-separator";
+import getBucketsFor from "utils/get-buckets-for";
 
 const updateEventsList = function(eventsList) {
   const events = _.map(eventsList, item =>
@@ -46,6 +49,7 @@ class Events extends Component {
 
     return (
       <div className="recent-events">
+        <EventSeparator content="Recent Events" id="recent-events" />
         {recentEvents.map(item => (
           <Event key={item.id} className="recent-event" content={item} />
         ))}
@@ -58,11 +62,15 @@ class Events extends Component {
 
     if (!_.isArray(upcomingEvents)) return null;
 
-    return (
-      <div>
-        {upcomingEvents.map(item => <Event key={item.id} content={item} />)}
+    const bucketedEvents = getBucketsFor(upcomingEvents);
+
+    return _.map(bucketedEvents, ({ id, message, className, events }) => (
+      <div key={id} className={className}>
+        <EventSeparator content={message} id={id} />
+        {events.length === 0 ? <NoEvents /> : null}
+        {_.map(events, item => <Event key={item.id} content={item} />)}
       </div>
-    );
+    ));
   }
 
   render() {
