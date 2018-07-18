@@ -10,20 +10,21 @@ Array [
         "name": "Meetup coming soon",
         "time": "2017-06-15T22:45:00",
       },
+    ],
+    "id": "today",
+    "message": "Today",
+  },
+  Object {
+    "className": "events-in-next-seven-days",
+    "events": Array [
       Object {
         "id": "2",
         "name": "Meetup this week",
         "time": "2017-06-16T09:45:00",
       },
     ],
-    "id": "today",
-    "message": "Today",
-  },
-  Object {
-    "className": "events-this-week",
-    "events": Array [],
-    "id": "this-week",
-    "message": "This Week",
+    "id": "in-next-seven-days",
+    "message": "Next 7 days",
   },
   Object {
     "className": "events-in-next-thirty-days",
@@ -79,20 +80,21 @@ Array [
         "name": "Meetup coming soon",
         "time": "2017-06-15T22:45:00",
       },
+    ],
+    "id": "today",
+    "message": "Today",
+  },
+  Object {
+    "className": "events-in-next-seven-days",
+    "events": Array [
       Object {
         "id": "2",
         "name": "Meetup this week",
         "time": "2017-06-16T09:45:00",
       },
     ],
-    "id": "today",
-    "message": "Today",
-  },
-  Object {
-    "className": "events-this-week",
-    "events": Array [],
-    "id": "this-week",
-    "message": "This Week",
+    "id": "in-next-seven-days",
+    "message": "Next 7 days",
   },
   Object {
     "className": "events-in-next-thirty-days",
@@ -146,10 +148,10 @@ Array [
     "message": "Today",
   },
   Object {
-    "className": "events-this-week",
+    "className": "events-in-next-seven-days",
     "events": Array [],
-    "id": "this-week",
-    "message": "This Week",
+    "id": "in-next-seven-days",
+    "message": "Next 7 days",
   },
   Object {
     "className": "events-in-next-thirty-days",
