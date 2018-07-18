@@ -3,7 +3,7 @@ import eventsForSomeBuckets from './test-data/events-for-some-buckets';
 import getBucketsFor from '../';
 
 jest.mock('moment', () => (input) => {
-  return require.requireActual('moment')(input || '2017-06-15');
+  return require.requireActual('moment')(input || '2017-06-15T08:00:00');
 });
 
 describe('get-buckets-for', function () {

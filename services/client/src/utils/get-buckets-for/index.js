@@ -2,14 +2,21 @@ import _ from "lodash";
 import moment from "moment";
 
 const withinDays = days => ({ time }) =>
-  moment(time).diff(moment(), "days") <= days;
+  moment(time).diff(moment(), "days") <= days - 1;
 
 const buckets = [
-  { id: "today", check: withinDays(1), message: "Today" },
   {
-    id: "this-week",
+    id: "today",
+    check: ({ time }) =>
+      moment()
+        .endOf("day")
+        .diff(moment(time)) > 0,
+    message: "Today"
+  },
+  {
+    id: "in-next-seven-days",
     check: withinDays(7),
-    message: "This Week"
+    message: "Next 7 days"
   },
   {
     id: "in-next-thirty-days",
