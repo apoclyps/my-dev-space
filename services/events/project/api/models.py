@@ -1,138 +1,338 @@
 # std stdlib
 from datetime import datetime
 
+# 3rd party imports
+import sqlalchemy
+from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import Column, Integer, ForeignKey
+from sqlalchemy.ext.declarative import declarative_base
+
 # local imports
 from project import db
-from sqlalchemy.dialects.postgresql import ARRAY
+from project.api.mixins import OutputMixin
+
+Base = declarative_base()
 
 
-class Event(db.Model):
-    __tablename__ = "events"
-    __table_args__ = {"extend_existing": True}
+event_topic_table = db.Table(
+    "event_topic_association",
+    db.Model.metadata,
+    Column("event_id", UUID(as_uuid=True), ForeignKey("event.id")),
+    Column("topic_id", UUID(as_uuid=True), ForeignKey("topic.id")),
+)
 
-    id = db.Column(db.String(64), primary_key=True)
-    name = db.Column(db.String(128), nullable=False)
-    created = db.Column(db.DateTime, nullable=False)
-    status = db.Column(db.String(20), nullable=False)
-    photo_url = db.Column(db.String(2048), nullable=False)
-    event_url = db.Column(db.String(2048), nullable=False)
-    description = db.Column(db.String(50000), nullable=False)
-    group_name = db.Column(db.String(128), nullable=False)
-    member_type = db.Column(db.String(128), nullable=False)
-    time = db.Column(db.DateTime, nullable=False)
-    source = db.Column(db.String(50), nullable=False)
+video_topic_table = db.Table(
+    "video_topic_association",
+    db.Model.metadata,
+    Column("video_id", UUID(as_uuid=True), ForeignKey("video.id")),
+    Column("topic_id", UUID(as_uuid=True), ForeignKey("topic.id")),
+)
+
+meetup_topic_table = db.Table(
+    "meetup_topic_association",
+    db.Model.metadata,
+    Column("meetup_id", UUID(as_uuid=True), ForeignKey("meetup.id")),
+    Column("topic_id", UUID(as_uuid=True), ForeignKey("topic.id")),
+)
+
+speaker_topic_table = db.Table(
+    "speaker_topic_association",
+    db.Model.metadata,
+    Column("speaker_id", UUID(as_uuid=True), ForeignKey("speaker.id")),
+    Column("topic_id", UUID(as_uuid=True), ForeignKey("topic.id")),
+)
+
+channel_topic_table = db.Table(
+    "channel_topic_association",
+    db.Model.metadata,
+    Column("channel_id", UUID(as_uuid=True), ForeignKey("channel.id")),
+    Column("topic_id", UUID(as_uuid=True), ForeignKey("topic.id")),
+)
+
+event_entry_table = db.Table(
+    "event_entry_association",
+    db.Model.metadata,
+    Column("event_id", UUID(as_uuid=True), ForeignKey("event.id")),
+    Column("entry_id", UUID(as_uuid=True), ForeignKey("entry.id")),
+)
+
+event_meetup_table = db.Table(
+    "event_meetup_association",
+    db.Model.metadata,
+    Column("event_id", UUID(as_uuid=True), ForeignKey("event.id")),
+    Column("meetup_id", UUID(as_uuid=True), ForeignKey("meetup.id")),
+)
+
+meetup_event_table = db.Table(
+    "meetup_event_association",
+    db.Model.metadata,
+    Column("meetup_id", UUID(as_uuid=True), ForeignKey("meetup.id")),
+    Column("event_id", UUID(as_uuid=True), ForeignKey("event.id")),
+)
+
+meetup_channel_table = db.Table(
+    "meetup_channel_association",
+    db.Model.metadata,
+    Column("meetup_id", UUID(as_uuid=True), ForeignKey("meetup.id")),
+    Column("channel_id", UUID(as_uuid=True), ForeignKey("channel.id")),
+)
+
+video_channel_table = db.Table(
+    "video_channel_association",
+    Column("video_id", UUID(as_uuid=True), ForeignKey("video.id")),
+    Column("channel_id", UUID(as_uuid=True), ForeignKey("channel.id")),
+)
+
+speaker_diversity_table = db.Table(
+    "speaker_diversity_association",
+    db.Model.metadata,
+    Column("speaker_id", UUID(as_uuid=True), ForeignKey("speaker.id")),
+    Column("diversity_id", UUID(as_uuid=True), ForeignKey("diversity.id")),
+)
+
+
+class Diversity(OutputMixin, db.Model):
+    __tablename__ = "diversity"
+
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=sqlalchemy.text("uuid_generate_v4()"),
+    )
+    name = Column(db.String(128), nullable=False)
+    description = Column(db.String(1000), nullable=True)
+
+    def __init__(self, name, description):
+        self.name = name
+        self.description = description
+
+
+class Topic(OutputMixin, db.Model):
+    __tablename__ = "topic"
+
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=sqlalchemy.text("uuid_generate_v4()"),
+    )
+    name = Column(db.String(128), nullable=False)
+    description = Column(db.String(1000), nullable=True)
+    abbreviation = Column(db.String(10), nullable=True)
+
+    def __init__(self, name, description=None, abbreviation=None):
+        self.name = name
+        self.description = description
+        self.abbreviation = abbreviation
+
+
+class Entry(OutputMixin, db.Model):
+    __tablename__ = "entry"
+
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=sqlalchemy.text("uuid_generate_v4()"),
+    )
+    type = Column(db.String(128), nullable=False)
+    description = Column(db.String(1000), nullable=True)
+
+    def __init__(self, type, description=None):
+        self.type = type
+        self.description = description
+
+
+class Event(OutputMixin, db.Model):
+    __tablename__ = "event"
+
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=sqlalchemy.text("uuid_generate_v4()"),
+    )
+    name = Column(db.String(128), nullable=False)
+    description = Column(db.String(50000), nullable=False)
+    url = Column(db.String(2048), nullable=False)
+    start = Column(db.DateTime, nullable=False)
+    end = Column(db.DateTime, nullable=False)
+    duration = Column(Integer, nullable=False)
+    category = Column(db.String(256), nullable=False)
+    topics = db.relationship("Topic", secondary=event_topic_table)
+    entry = db.relationship("Entry", secondary=event_entry_table)
+    created = Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    updated = Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    deleted = Column(db.DateTime, nullable=True)
+    source = Column(db.String(50), nullable=False)
 
     def __init__(
         self,
-        id,
         name,
-        created,
-        status,
-        photo_url,
-        event_url,
         description,
-        group_name,
-        member_type,
-        time,
+        url,
+        start,
+        end,
+        duration,
+        topics,
+        entry,
+        category,
         source,
     ):
-        self.id = id
         self.name = name
-        self.created = created
-        self.status = status
-        self.photo_url = photo_url
-        self.event_url = event_url
         self.description = description
-        self.group_name = group_name
-        self.member_type = member_type
-        self.time = time
+        self.url = url
+        self.start = start
+        self.end = end
+        self.duration = duration
+        self.topics = topics
+        self.entry = entry
+        self.category = category
         self.source = source
 
-    def to_json(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-            "created": self.created.isoformat(),
-            "status": self.status,
-            "photo_url": self.photo_url,
-            "event_url": self.event_url,
-            "description": self.description,
-            "group_name": self.group_name,
-            "member_type": self.member_type,
-            "time": self.time.isoformat(),
-            "source": self.source,
-        }
 
+class Channel(OutputMixin, db.Model):
+    __tablename__ = "channel"
 
-class Video(db.Model):
-    __tablename__ = "videos"
-    __table_args__ = {"extend_existing": True}
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=sqlalchemy.text("uuid_generate_v4()"),
+    )
+    name = Column(db.String(128), nullable=False)
+    url = Column(db.String(2048), nullable=False)
+    description = Column(db.String(50000), nullable=False)
+    topics = db.relationship("Topic", secondary=channel_topic_table)
+    created = Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    updated = Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    deleted = Column(db.DateTime, nullable=True)
+    source = Column(db.String(50), nullable=False)
 
-    id = db.Column(db.String(64), primary_key=True)
-    name = db.Column(db.String(128), nullable=False)
-    created = db.Column(db.DateTime, nullable=False)
-    url = db.Column(db.String(2048), nullable=False)
-    description = db.Column(db.String(50000), nullable=False)
-    channel = db.Column(db.String(128), nullable=False)
-    source = db.Column(db.String(50), nullable=False)
-
-    def __init__(self, id, name, created, url, description, channel, source):
-        self.id = id
+    def __init__(self, name, topics, source, url=None, description=None):
         self.name = name
-        self.created = created
         self.url = url
         self.description = description
+        self.topics = topics
+        self.source = source
+
+
+class Video(OutputMixin, db.Model):
+    __tablename__ = "video"
+
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=sqlalchemy.text("uuid_generate_v4()"),
+    )
+    name = Column(db.String(128), nullable=False)
+    url = Column(db.String(2048), nullable=False)
+    description = Column(db.String(50000), nullable=False)
+    topics = db.relationship(
+        "Topic",
+        secondary=video_topic_table,
+        backref=db.backref("video", lazy="dynamic"),
+    )
+    channel = db.relationship(
+        "Channel",
+        secondary=video_channel_table,
+        backref=db.backref("video", lazy="dynamic"),
+    )
+    created = Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    updated = Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    deleted = Column(db.DateTime, nullable=True)
+    source = Column(db.String(50), nullable=False)
+
+    def __init__(self, name, url, description, topics, channel, source, created=None):
+        self.name = name
+        self.url = url
+        self.description = description
+        self.topics = topics
         self.channel = channel
         self.source = source
 
-    def to_json(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-            "created": self.created.isoformat(),
-            "url": self.url,
-            "description": self.description,
-            "channel": self.channel,
-            "source": self.source,
-        }
+        if created:
+            self.created = created
 
 
-class Speaker(db.Model):
-    __tablename__ = "speakers"
+class Meetup(OutputMixin, db.Model):
+    __tablename__ = "meetup"
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128), nullable=False)
-    image = db.Column(db.String(1024), nullable=False)
-    contact = db.Column(db.String(128), nullable=False)
-    created = db.Column(db.DateTime, default=datetime.utcnow)
-    role = db.Column(db.String(128), nullable=False)
-    topics = db.Column(ARRAY(db.String), nullable=False)
-    diversification = db.Column(db.ARRAY(db.String), nullable=False)
-    location = db.Column(db.String(128), nullable=False)
-    source = db.Column(db.String(50), nullable=False)
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=sqlalchemy.text("uuid_generate_v4()"),
+    )
+    name = Column(db.String(128), nullable=False)
+    logo = Column(db.String(1000), nullable=False)
+    url = Column(db.String(2048), nullable=False)
+    description = Column(db.String(50000), nullable=False)
+    topics = db.relationship(
+        "Topic",
+        secondary=meetup_topic_table,
+        backref=db.backref("meetup", lazy="dynamic"),
+    )
+    events = db.relationship(
+        "Event",
+        secondary=meetup_event_table,
+        backref=db.backref("meetup", lazy="dynamic"),
+    )
+    channel = db.relationship(
+        "Channel",
+        secondary=meetup_channel_table,
+        backref=db.backref("meetup", lazy="dynamic"),
+    )
+    created = Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    updated = Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    deleted = Column(db.DateTime, nullable=True)
+    source = Column(db.String(50), nullable=False)
+
+    def __init__(self, name, logo, url, description, topics, events, channel, source):
+        self.name = name
+        self.logo = logo
+        self.url = url
+        self.description = description
+        self.topics = topics
+        self.events = events
+        self.channel = channel
+        self.source = source
+
+
+class Speaker(OutputMixin, db.Model):
+    __tablename__ = "speaker"
+
+    id = Column(
+        UUID(as_uuid=True),
+        primary_key=True,
+        server_default=sqlalchemy.text("uuid_generate_v4()"),
+    )
+    name = Column(db.String(128), nullable=False)
+    avatar = Column(db.String(1024), nullable=False)
+    bio = Column(db.String(1024), nullable=False)
+    contact = Column(db.String(128), nullable=False)
+    role = Column(db.String(128), nullable=False)
+    topics = db.relationship("Topic", secondary=speaker_topic_table)
+    diversification = db.relationship("Diversity", secondary=speaker_diversity_table)
+    location = Column(db.String(128), nullable=False)
+    created = Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    updated = Column(db.DateTime, default=datetime.utcnow, nullable=False)
+    deleted = Column(db.DateTime, nullable=True)
+    source = Column(db.String(50), nullable=False)
 
     def __init__(
-        self, name, image, contact, role, topics, diversification, location, source
+        self,
+        name,
+        avatar,
+        bio,
+        contact,
+        role,
+        topics,
+        diversification,
+        location,
+        source,
     ):
         self.name = name
-        self.image = image
+        self.avatar = avatar
+        self.bio = bio
         self.contact = contact
         self.role = role
         self.topics = topics
         self.diversification = diversification
         self.location = location
         self.source = source
-
-    def to_json(self):
-        return {
-            "id": self.id,
-            "name": self.name,
-            "image": self.image,
-            "created": self.created.isoformat(),
-            "contact": self.contact,
-            "role": self.role,
-            "topics": self.topics,
-            "diversification": self.diversification,
-            "location": self.location,
-            "source": self.source,
-        }
