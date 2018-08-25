@@ -12,7 +12,6 @@ export default css`
     text-decoration: none;
   }
 
-  //event organisor name
   .event-details {
     font-size: 0.75rem;
     font-weight: bold;

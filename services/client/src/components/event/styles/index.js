@@ -10,21 +10,8 @@ export default css`
 
   .recent-event {
     background-color: white;
-    border: 1px solid #FF0000;
+    border: 1px solid #ff0000;
     border-top: none;
-    -webkit-box-shadow: 0px 0px 53px 6px #FF0000;
-    -moz-box-shadow: 0px 0px 53px 6px #FF0000;
-    box-shadow: 0px 0px 53px 6px #FF0000;
-  }
-
-  .nows-events{
-    background-color: white;
-    border: 1px solid #34B188;
-    border-top: none;
-    -webkit-box-shadow: 0px 0px 53px 6px #34B188;
-    -moz-box-shadow: 0px 0px 53px 6px #34B188;
-    box-shadow: 0px 0px 53px 6px #34B188;
-    
   }
 
   .event-icon {
@@ -35,5 +22,4 @@ export default css`
     margin-left: 1rem;
     margin-top: 0.25rem;
   }
-  
 `;
