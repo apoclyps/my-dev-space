@@ -9,8 +9,8 @@ export default css`
   }
 
   .recent-event {
-    background-color: #fff9c2;
-    border: 1px solid #f2d024;
+    background-color: white;
+    border: 1px solid #ff0000;
     border-top: none;
   }
 

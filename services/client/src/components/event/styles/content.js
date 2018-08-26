@@ -14,7 +14,8 @@ export default css`
 
   .event-details {
     font-size: 0.75rem;
-    color: #b8c2cc;
+    font-weight: bold;
+    color: #81878c;
   }
 
   .event-details span {
