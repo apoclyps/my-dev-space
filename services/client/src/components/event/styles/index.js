@@ -9,9 +9,7 @@ export default css`
   }
 
   .recent-event {
-    background-color: #fff9c2;
-    border: 1px solid #f2d024;
-    border-top: none;
+    background-color: white;
   }
 
   .event-icon {

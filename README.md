@@ -1,6 +1,6 @@
 # My Dev Space
 
-[![Build Status](https://travis-ci.com/apoclyps/my-dev-space.svg?token=putHnyd9Fyt2bwsGacCD&branch=master)](https://travis-ci.com/apoclyps/my-dev-space?token=putHnyd9Fyt2bwsGacCD&branch=master)
+[![Build Status](https://travis-ci.com/apoclyps/my-dev-space.svg?token=putHnyd9Fyt2bwsGacCD&branch=production)](https://travis-ci.com/apoclyps/my-dev-space?token=putHnyd9Fyt2bwsGacCD&branch=production)
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 [![Maintainability](https://api.codeclimate.com/v1/badges/7cda329923afff4fc8e8/maintainability)](https://codeclimate.com/github/apoclyps/my-dev-space/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/7cda329923afff4fc8e8/test_coverage)](https://codeclimate.com/github/apoclyps/my-dev-space/test_coverage)
@@ -22,9 +22,9 @@ What things you need to install the software and how to install them
 * [Python](https://maven.apache.org/) - Dependency Management
 * [Node](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
-### Setting up local development
+### Setting up a local development environment
 
-The following steps will checkout the repository, install the dependencies needed for the React frontend and run the service on `http://localhost`.
+The following steps will check out the repository, install the dependencies needed for the React frontend and run the service on `http://localhost`.
 
 ```bash
 $ git clone https://github.com/apoclyps/my-dev-space
@@ -38,7 +38,6 @@ Once the service is up and running, you will need to manually create the require
 $ docker-compose -f docker-compose-dev.yml run users-service python manage.py recreate_db
 $ docker-compose -f docker-compose-dev.yml run users-service python manage.py seed_db
 $ docker-compose -f docker-compose-dev.yml run events-service python manage.py recreate_db
-$ docker-compose -f docker-compose-dev.yml run events-service python manage.py seed_db
 ```
 
 On subsequent runs (when the above steps have been completed), you can apply new database migrations to your local service by running:
@@ -48,11 +47,17 @@ $ docker-compose -f docker-compose-dev.yml run users-service python manage.py db
 $ docker-compose -f docker-compose-dev.yml run events-service python manage.py db upgrade
 ```
 
-Alternatively, if you make a change to a model during development, you will need to create and commit a migration file for that service. As a best practive, migration files should be committed independently to code:
+Alternatively, if you make a change to a model during development, you will need to create and commit a migration file for that service. As a best practice, migration files should be committed independently to code:
 
 ```bash
 $ docker-compose -f docker-compose-dev.yml run users-service python manage.py db migrate
 $ docker-compose -f docker-compose-dev.yml run events-service python manage.py db migrate
+```
+
+To load data into the service for development, the recommended solution is to use the load script within the `scripts` folder to populate the local database. Details on how to configure the script can be found in [`scripts/README.md`](scripts/README.md).
+
+```sh
+`./load_data.sh dev`
 ```
 
 And to tear down the local development stack, simply run:
@@ -144,7 +149,7 @@ A list of contributors who participated in this project.
 <!-- prettier-ignore -->
 | [<img src="https://avatars0.githubusercontent.com/u/1443700?v=4" width="100px;"/><br /><sub><b>Kyle Harrison</b></sub>](http://www.kyleharrison.co.uk)<br />[💻](https://github.com/apoclyps/my-dev-space/commits?author=apoclyps "Code") [📖](https://github.com/apoclyps/my-dev-space/commits?author=apoclyps "Documentation") | [<img src="https://avatars0.githubusercontent.com/u/6596210?v=4" width="100px;"/><br /><sub><b>Adam Smith</b></sub>](https://github.com/FatalEnigma)<br />[💻](https://github.com/apoclyps/my-dev-space/commits?author=FatalEnigma "Code") | [<img src="https://avatars2.githubusercontent.com/u/17544636?v=4" width="100px;"/><br /><sub><b>Ewa G </b></sub>](https://github.com/TheMicroGirl)<br />[💻](https://github.com/apoclyps/my-dev-space/commits?author=TheMicroGirl "Code") | [<img src="https://avatars2.githubusercontent.com/u/16101792?v=4" width="100px;"/><br /><sub><b>Michael Grundie</b></sub>](https://www.linkedin.com/in/michaelgrundie)<br />[💻](https://github.com/apoclyps/my-dev-space/commits?author=MichaelGrundie "Code") | [<img src="https://avatars1.githubusercontent.com/u/9554484?v=4" width="100px;"/><br /><sub><b>DermotMcAteer</b></sub>](https://github.com/DermotMcAteer)<br />[💻](https://github.com/apoclyps/my-dev-space/commits?author=DermotMcAteer "Code") | [<img src="https://avatars2.githubusercontent.com/u/28186624?v=4" width="100px;"/><br /><sub><b>kimmoylan</b></sub>](https://github.com/kimmoylan)<br />[💻](https://github.com/apoclyps/my-dev-space/commits?author=kimmoylan "Code") | [<img src="https://avatars2.githubusercontent.com/u/2376829?v=4" width="100px;"/><br /><sub><b>Peter Stevenson</b></sub>](https://github.com/GoldenCrow)<br />[💻](https://github.com/apoclyps/my-dev-space/commits?author=GoldenCrow "Code") |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| [<img src="https://avatars2.githubusercontent.com/u/635903?v=4" width="100px;"/><br /><sub><b>Alistair Brown</b></sub>](http://alistairjcbrown.com)<br />[💻](https://github.com/apoclyps/my-dev-space/commits?author=alistairjcbrown "Code") |
+| [<img src="https://avatars2.githubusercontent.com/u/635903?v=4" width="100px;"/><br /><sub><b>Alistair Brown</b></sub>](http://alistairjcbrown.com)<br />[💻](https://github.com/apoclyps/my-dev-space/commits?author=alistairjcbrown "Code") | [<img src="https://avatars0.githubusercontent.com/u/32307798?v=4" width="100px;"/><br /><sub><b>gingerzoealex</b></sub>](https://github.com/gingerzoealex)<br />[💻](https://github.com/apoclyps/my-dev-space/commits?author=gingerzoealex "Code") [🎨](#design-gingerzoealex "Design") |
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ## License

@@ -11,7 +11,7 @@ const TimeToEvent = ({ startTime }) => {
     <React.Fragment>
       <style jsx>{`
         span {
-          color: #dae1e7;
+          color: #989fa5;
           font-style: italic;
         }
       `}</style>
