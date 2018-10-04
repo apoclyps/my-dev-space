@@ -7,6 +7,7 @@ import Event from "components/event";
 import Error from "components/event/error";
 import NoEvents from "components/no-events";
 import EventSeparator from "components/event-separator";
+import SearchBar from "components/search";
 import getBucketsFor from "utils/get-buckets-for";
 
 class Events extends Component {
@@ -51,6 +52,12 @@ class Events extends Component {
     ));
   }
 
+  renderSearch() {
+    return (
+      <SearchBar />
+    )
+  }
+
   renderLoading() {
     const { isLoading } = this.props;
 
@@ -76,9 +83,10 @@ class Events extends Component {
   render() {
     return (
       <div className="page">
-        <CallToActionBanner />
+        {this.renderSearch()}
         {this.renderLoading()}
         {this.renderError()}
+        <CallToActionBanner />
       </div>
     );
   }

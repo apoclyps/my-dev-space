@@ -46,6 +46,7 @@ describe("async actions", () => {
 
     return store.dispatch(Actions.eventsFetchData(url)).then(() => {
       // return of async actions
+      console.log(store.getActions());
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
