@@ -134,6 +134,83 @@
         },
         "summary": "Returns all users"
       }
+    },
+    "/videos": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Array of video objects",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/video-full"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Returns all videos"
+      },
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/video-add-payload"
+              }
+            }
+          },
+          "required": true,
+          "description": "Video to add"
+        },
+        "security": [{
+          "bearerAuth": []
+        }],
+        "responses": {
+          "201": {
+            "description": "Video added"
+          },
+          "202": {
+            "description": "Video already exists"
+          },
+          "400": {
+            "description": "Invalid payload"
+          }
+        },
+        "summary": "Adds a video"
+      }
+    },
+    "/videos/{name}": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Video object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/video-full"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Video not found"
+          }
+        },
+        "parameters": [{
+          "schema": {
+            "type": "string"
+          },
+          "required": true,
+          "description": "Name of the video to fetch",
+          "name": "name",
+          "in": "path"
+        }],
+        "summary": "Returns a video based on its name"
+      }
     }
   },
   "servers": [{
@@ -166,6 +243,100 @@
             "type": "string"
           },
           "email": {
+            "type": "string"
+          }
+        }
+      },
+      "video-add-payload": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "topics": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "channel": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "video-full": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "topics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/topic"
+            }
+          },
+          "channel": {
+            "$ref": "#/components/schemas/channel"
+          },
+          "created": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "topic": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "abbreviation": {
+            "type": "string"
+          }
+        }
+      },
+      "channel": {
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "topics": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/topic"
+            }
+          },
+          "source": {
             "type": "string"
           }
         }
