@@ -113,3 +113,52 @@ will receive an "Access Denied" error. Instead you may want to comment out the
 ### `eventbrite:logs`
 
 Pulls the logs from cloudwatch of the last lambda run. Useful for debugging.
+
+---
+
+## Farset Labs Calendar
+
+Lambda used to regularly pull events from the Farset Labs calendar. There are
+helper scripts to aid in deployment and development. Use `npm run <command>`
+with any of the below.
+
+For initial setup, please create a `farsetlabsEvents` profile in your
+`~/.aws/credentials` file. Serverless will use this when running the commands
+listed below.
+
+```
+[farsetlabsEvents]
+aws_access_key_id = <access-key-id-value>
+aws_secret_access_key = <access-key-value>
+```
+
+The Farset Labs calendar is public. You will not need to set any API tokens to
+run this lambda.
+
+### `farsetlabs:deploy`
+
+Deploy (or redeploy) the lambda and all associated infrastructure. Do this
+when setting up for the first time, or whenever the `serverless.yml` file
+changes
+
+### `farsetlabs:update`
+
+Update just the handler functionality. Do then whenever you change the
+functionality of the lambda.
+
+### `farsetlabs:invoke`
+
+Invoke the lambda on AWS. As this lambda created files in S3, you should see new
+ICS files created of the data pulled from the Farset Labs calendar.
+
+### `farsetlabs:invoke-local`
+
+Invoke the lambda locally. Use this for development.
+
+The local lambda will not have permissions to write the files to S3 and you
+will receive an "Access Denied" error. Instead you may want to comment out the
+`uploadTo` calls whilst in development.
+
+### `farsetlabs:logs`
+
+Pulls the logs from cloudwatch of the last lambda run. Useful for debugging.
