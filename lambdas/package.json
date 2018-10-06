@@ -13,7 +13,12 @@
     "eventbrite:update": "cd eventbrite && serverless deploy function -f hello --aws-profile eventbriteEvents",
     "eventbrite:invoke": "cd eventbrite && serverless invoke -f hello -l --aws-profile eventbriteEvents",
     "eventbrite:invoke-local": "cd eventbrite && serverless invoke local -f hello",
-    "eventbrite:logs": "cd eventbrite && serverless logs -f hello -l --aws-profile eventbriteEvents"
+    "eventbrite:logs": "cd eventbrite && serverless logs -f hello -l --aws-profile eventbriteEvents",
+    "farsetlabs:deploy": "cd farsetlabs && serverless deploy -v --aws-profile farsetlabsEvents",
+    "farsetlabs:update": "cd farsetlabs && serverless deploy function -f hello --aws-profile farsetlabsEvents",
+    "farsetlabs:invoke": "cd farsetlabs && serverless invoke -f hello -l --aws-profile farsetlabsEvents",
+    "farsetlabs:invoke-local": "cd farsetlabs && serverless invoke local -f hello",
+    "farsetlabs:logs": "cd farsetlabs && serverless logs -f hello -l --aws-profile farsetlabsEvents"
   },
   "dependencies": {
     "serverless": "^1.30.3"
