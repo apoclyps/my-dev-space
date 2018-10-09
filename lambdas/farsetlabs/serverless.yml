@@ -1,4 +1,8 @@
-service: pull-farsetlabs-events
+service: muxer-pull-farsetlabs-events
+
+custom:
+  bucketName: "farsetlabs-events-bucket"
+
 provider:
   name: aws
   runtime: nodejs8.10
@@ -10,18 +14,41 @@ provider:
         Fn::Join:
           - ""
           - - "arn:aws:s3:::"
-            - "Ref" : "FarsetlabsEventsBucket"
+            - ${self:custom.bucketName}
             - "/*"
+
 functions:
   produce:
-    handler: handler.produce
+    handler: handlers/producer.produce
     events:
       - schedule: rate(1 hour)
     environment:
       TZ: Europe/Belfast
+  transform:
+    handler: handlers/transformer.transform
+    environment:
+      TZ: Europe/Belfast
+
 resources:
   Resources:
-    FarsetlabsEventsBucket:
+    S3BucketFarsetLabsEvents:
+      DependsOn:
+        - TransformLambdaPermissionS3BucketFarsetLabsEventsS3
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: farsetlabs-events-bucket
+        BucketName: ${self:custom.bucketName}
+        NotificationConfiguration:
+          LambdaConfigurations:
+            - Event: "s3:ObjectCreated:*"
+              Function:
+                "Fn::GetAtt": [ TransformLambdaFunction, Arn ]
+    TransformLambdaPermissionS3BucketFarsetLabsEventsS3:
+      DependsOn:
+        - TransformLambdaFunction
+      Type: AWS::Lambda::Permission
+      Properties:
+        FunctionName:
+          "Fn::GetAtt": [ TransformLambdaFunction, Arn ]
+        Action: "lambda:InvokeFunction"
+        Principal: "s3.amazonaws.com"
+        SourceArn: "arn:aws:s3:::${self:custom.bucketName}"

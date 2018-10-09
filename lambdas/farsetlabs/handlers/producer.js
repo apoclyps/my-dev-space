@@ -7,7 +7,7 @@ const {
   getFromWeb,
   setInS3
 } = require("aws-lambda-data-utils");
-const { bucketName, getEventsUrl } = require("./config");
+const { bucketName, getEventsUrl } = require("../config");
 
 const getFromApi = async function() {
   const initialResponse = await getFromWeb(getEventsUrl());
@@ -46,7 +46,7 @@ module.exports.produce = async (event, context, callback) => {
     // Write captured data to S3
     const message = (await uploadData(calendarData)).key;
 
-    callback(null, { message, event });
+    callback(null, { message });
   } catch (err) {
     callback(err, null);
   }
