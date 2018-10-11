@@ -13,7 +13,7 @@ const TimeToEvent = ({ startTime }) => {
         span {
           color: #989fa5;
           font-style: italic;
-          font-weight: 200;
+          font-weight: 500;
         }
       `}</style>
       <span className="humanize">

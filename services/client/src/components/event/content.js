@@ -18,11 +18,12 @@ const Content = ({ name, start, url, category }) => (
         {formatTitle(name)}
       </a>
     </div>
-    <div className="event-time">
-      <EventTime startTime={start} />
-    </div>
     <div className="event-details">
-      {category} &nbsp;
+      {category}
+      <br></br><br></br>
+      <div className="event-time">
+        <EventTime startTime={start} />
+      </div>
       <TimeToEvent startTime={start} />
     </div>
   </React.Fragment>
