@@ -18,7 +18,11 @@
     "farsetlabs:producer:update": "cd farsetlabs && serverless deploy function -f produce --aws-profile farsetlabsEvents",
     "farsetlabs:producer:invoke": "cd farsetlabs && serverless invoke -f produce -l --aws-profile farsetlabsEvents",
     "farsetlabs:producer:invoke-local": "cd farsetlabs && serverless invoke local -f produce",
-    "farsetlabs:producer:logs": "cd farsetlabs && serverless logs -f produce -l --aws-profile farsetlabsEvents"
+    "farsetlabs:producer:logs": "cd farsetlabs && serverless logs -f produce -l --aws-profile farsetlabsEvents",
+    "farsetlabs:transformer:update": "cd farsetlabs && serverless deploy function -f transform --aws-profile farsetlabsEvents",
+    "farsetlabs:transformer:invoke": "cd farsetlabs && serverless invoke -f transform -l --aws-profile farsetlabsEvents",
+    "farsetlabs:transformer:invoke-local": "cd farsetlabs && serverless invoke local -f transform",
+    "farsetlabs:transformer:logs": "cd farsetlabs && serverless logs -f transform -l --aws-profile farsetlabsEvents"
   },
   "dependencies": {
     "serverless": "^1.30.3"

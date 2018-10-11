@@ -43,8 +43,8 @@ functionality of the lambda.
 
 #### `meetupcom:producer:invoke`
 
-Invoke the lambda on AWS. As this lambda created files in S3, you should see new
-JSON files created of the data pulled from Meetup.com.
+Invoke the lambda on AWS. As this lambda creates files in S3, you should see new
+JSON files created with the data pulled from Meetup.com.
 
 #### `meetupcom:producer:invoke-local`
 
@@ -104,8 +104,8 @@ functionality of the lambda.
 
 #### `eventbrite:producer:invoke`
 
-Invoke the lambda on AWS. As this lambda created files in S3, you should see new
-JSON files created of the data pulled from Eventbrite.
+Invoke the lambda on AWS. As this lambda creates files in S3, you should see new
+JSON files created with the data pulled from Eventbrite.
 
 #### `eventbrite:producer:invoke-local`
 
@@ -164,8 +164,8 @@ functionality of the lambda.
 
 #### `farsetlabs:producer:invoke`
 
-Invoke the lambda on AWS. As this lambda created files in S3, you should see new
-ICS files created of the data pulled from the Farset Labs calendar.
+Invoke the lambda on AWS. As this lambda creates files in S3, you should see new
+ICS files created with the data pulled from the Farset Labs calendar.
 
 #### `farsetlabs:producer:invoke-local`
 
@@ -176,5 +176,42 @@ will receive an "Access Denied" error. Instead you may want to comment out the
 `uploadTo` calls whilst in development.
 
 #### `farsetlabs:producer:logs`
+
+Pulls the logs from cloudwatch of the last lambda run. Useful for debugging.
+
+
+### Transformer
+
+This lambda takes the Farset Labs calendar iCalendar data which has been
+saved to S3, transforms it into a standardised format and saves it back to S3.
+
+This lambda is triggered by the creation of the source file by the producer
+lambda.
+
+#### `farsetlabs:transform:update`
+
+Update just the handler functionality. Do then whenever you change the
+functionality of the lambda.
+
+#### `farsetlabs:transform:invoke`
+
+Invoke the lambda on AWS. As this lambda is triggered by the creation of files
+in the events bucket, this may not run correctly. It can be invoked by calling
+the producer invoke command instead.
+
+#### `farsetlabs:transform:invoke-local`
+
+Invoke the lambda locally. Use this for development.
+
+The local lambda will need to be provided with an event object which contains
+mock values for the newly created file. Samples of the AWS event objects can be
+found at:
+https://docs.aws.amazon.com/lambda/latest/dg/eventsources.html#eventsources-s3-put
+
+The local lambda will not have permissions to read / write files to / from S3
+and you will receive an "Access Denied" error. Instead you may want to comment
+out the `getFromS3` and `uploadTo` calls whilst in development.
+
+#### `farsetlabs:transform:logs`
 
 Pulls the logs from cloudwatch of the last lambda run. Useful for debugging.
