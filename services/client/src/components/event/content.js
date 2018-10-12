@@ -20,12 +20,13 @@ const Content = ({ name, start, url, category }) => (
     </div>
     <div className="event-details">
       {category}
-      <br></br><br></br>
-      <div className="event-time">
-        <EventTime startTime={start} />
-      </div>
+    </div>
+    <div className="event-time">
+      <EventTime startTime={start} />
       <TimeToEvent startTime={start} />
     </div>
+
+
   </React.Fragment>
 );
 

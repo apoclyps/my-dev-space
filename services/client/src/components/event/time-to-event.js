@@ -17,7 +17,7 @@ const TimeToEvent = ({ startTime }) => {
         }
       `}</style>
       <span className="humanize">
-        ( {duration > 0 ? "next" : "last"} event {duration.humanize(true)} )
+        - {duration > 0 ? "next" : "last"} event {duration.humanize(true)}
       </span>
     </React.Fragment>
   );

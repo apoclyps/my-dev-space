@@ -12,8 +12,7 @@ const TimeToEvent = ({ startTime }) => {
           color: #989fa5;
           font-style: italic;
           font-weight: 500;
-          border-top: grey 1px solid;
-          padding-top: 5px;
+          
         }
       `}</style>
       <span>{eventTimeStamp}</span>
