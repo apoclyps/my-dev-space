@@ -154,8 +154,11 @@ changes
 This lambda pulls data from the Farset Labs calendar iCalendar endpoint and
 saves it to S3.
 
-The Farset Labs calendar is public. You will not need to set any API tokens to
-run this lambda.
+You will need to create a new entry in the AWS Systems Manager Parameter store
+for the Google Calendar API token. Make a secure string with the name
+`googleCalendarApiToken` and the value of your Eventbrite API token. Serverless
+will then automatically pull that value into your lambda as an environment
+variable.
 
 #### `farsetlabs:producer:update`
 
@@ -169,7 +172,12 @@ ICS files created with the data pulled from the Farset Labs calendar.
 
 #### `farsetlabs:producer:invoke-local`
 
-Invoke the lambda locally. Use this for development.
+Invoke the lambda locally. Use this for development. You will need to pass an
+Google Calendar API token as an environment variable:
+
+```
+GOOGLE_CALENDAR_API_TOKEN=<token-value> npm run farsetlabs:producer:invoke-local
+```
 
 The local lambda will not have permissions to write the files to S3 and you
 will receive an "Access Denied" error. Instead you may want to comment out the

@@ -24,6 +24,7 @@ functions:
       - schedule: rate(1 hour)
     environment:
       TZ: Europe/Belfast
+      GOOGLE_CALENDAR_API_TOKEN: ${ssm:googleCalendarApiToken~true}
   transform:
     handler: handlers/transformer.transform
     environment:

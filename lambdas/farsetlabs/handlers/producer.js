@@ -1,6 +1,5 @@
 "use strict";
 
-const icalendar = require('icalendar');
 const {
   createHash,
   getDateTimePathFor,
@@ -9,18 +8,8 @@ const {
 } = require("aws-lambda-data-utils");
 const { bucketName, getEventsUrl } = require("../config");
 
-const getFromApi = async function() {
-  const initialResponse = await getFromWeb(getEventsUrl());
-  const calendar = icalendar.parse_calendar(initialResponse);
-
-  if (calendar.events().length < 1) {
-    throw new Error("No events found");
-  }
-
-  return initialResponse;
-}
-
-const uploadTo = function(createFilename, fileContents) {
+const uploadTo = function(createFilename, data) {
+  const fileContents = JSON.stringify(data);
   const today = new Date();
   const hash = createHash(fileContents);
   const prefix = getDateTimePathFor(today);
@@ -33,7 +22,7 @@ const uploadTo = function(createFilename, fileContents) {
 const uploadData = function(calendarData) {
     return uploadTo(
       (today, hash) =>
-        `farset-labs-calendar__${today.valueOf()}__${hash}.ics`,
+        `farset-labs-calendar__${today.valueOf()}__${hash}.json`,
         calendarData
     );
 };
@@ -41,7 +30,7 @@ const uploadData = function(calendarData) {
 module.exports.produce = async (event, context, callback) => {
   try {
     // Read list of upcoming events
-    const calendarData = await getFromApi();
+    const calendarData = JSON.parse(await getFromWeb(getEventsUrl()));
 
     // Write captured data to S3
     const message = (await uploadData(calendarData)).key;
