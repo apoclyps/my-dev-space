@@ -1,6 +1,5 @@
 "use strict";
 
-const icalendar = require('icalendar');
 const { getFromS3 } = require("aws-lambda-data-utils");
 
 module.exports.transform = async (event, context, callback) => {
@@ -11,11 +10,11 @@ module.exports.transform = async (event, context, callback) => {
       s3: { bucket, object: file }
     }) {
       const calendarFile = await getFromS3(bucket.name, file.key);
-      const calendar = icalendar.parse_calendar(calendarFile.Body.toString('utf-8'));
+      const calendar = JSON.parse(calendarFile.Body.toString('utf-8'));
 
       // TODO: Update this to convert to standardised event format
       //       Don't foget to remove events in the past
-      return calendar.events().length;
+      return calendar.items.length;
     }));
 
     // TODO: Update this to output standardised event to publish bucket
