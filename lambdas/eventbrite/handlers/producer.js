@@ -26,15 +26,13 @@ const getFromApi = async function() {
   return Promise.all([initialResponse].concat(requests));
 };
 
-const uploadData = function(bucketName, eventsPages) {
-  return eventsPages.map(function(eventsPage, index) {
-    return uploadTo(
-      bucketName,
-      (today, hash) =>
-        `eventbrite-events-page-${index + 1}__${today.valueOf()}__${hash}.json`,
-      eventsPage
-    );
-  });
+const uploadData = function(bucketName, eventsPage, { index }) {
+  return uploadTo(
+    bucketName,
+    (today, hash) =>
+      `eventbrite-events-page-${index + 1}__${today.valueOf()}__${hash}.json`,
+    eventsPage
+  );
 };
 
 module.exports.produce = async (event, context, callback) => {
@@ -50,10 +48,11 @@ module.exports.produce = async (event, context, callback) => {
 
     // Write captured data to S3
     const { producerBucket } = buckets();
-    const uploads = uploadData(producerBucket, eventsPages);
-    const message = (await Promise.all(uploads)).map(({ key }) => key);
+    const filePaths = await Promise.all(await eventsPages.map(async function (eventsPage, index) {
+      return (await uploadData(producerBucket, eventsPage, { index })).key;
+    }));
 
-    callback(null, { message });
+    callback(null, { message: filePaths });
   } catch (err) {
     callback(err, null);
   }

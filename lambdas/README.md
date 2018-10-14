@@ -124,6 +124,44 @@ will receive an "Access Denied" error. Instead you may want to comment out the
 
 Pulls the logs from cloudwatch of the last lambda run. Useful for debugging.
 
+
+### Transformer
+
+This lambda takes the Eventbrite JSON data which has been saved to S3,
+transforms it into a standardised format and saves it back to S3.
+
+This lambda is triggered by the creation of the source file by the producer
+lambda.
+
+#### `eventbrite:transform:update`
+
+Update just the handler functionality. Do then whenever you change the
+functionality of the lambda.
+
+#### `eventbrite:transform:invoke`
+
+Invoke the lambda on AWS. As this lambda is triggered by the creation of files
+in the producer bucket, this may not run correctly. It can be invoked by calling
+the producer invoke command instead.
+
+#### `eventbrite:transform:invoke-local`
+
+Invoke the lambda locally. Use this for development.
+
+The local lambda will need to be provided with an event object which contains
+mock values for the newly created file. Samples of the AWS event objects can be
+found at:
+https://docs.aws.amazon.com/lambda/latest/dg/eventsources.html#eventsources-s3-put
+
+The local lambda will not have permissions to read / write files to / from S3
+and you will receive an "Access Denied" error. Instead you may want to comment
+out the `getFromS3` and `uploadTo` calls whilst in development.
+
+#### `eventbrite:transform:logs`
+
+Pulls the logs from cloudwatch of the last lambda run. Useful for debugging.
+
+
 ---
 
 ## Farset Labs Calendar
@@ -204,7 +242,7 @@ functionality of the lambda.
 #### `farsetlabs:transform:invoke`
 
 Invoke the lambda on AWS. As this lambda is triggered by the creation of files
-in the events bucket, this may not run correctly. It can be invoked by calling
+in the producer bucket, this may not run correctly. It can be invoked by calling
 the producer invoke command instead.
 
 #### `farsetlabs:transform:invoke-local`
