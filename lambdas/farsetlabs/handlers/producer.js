@@ -2,7 +2,16 @@
 
 const { getFromWeb } = require("aws-lambda-data-utils");
 const { buckets, getEventsUrl } = require("../config");
-const { uploadData } = require("../utils");
+const { uploadTo } = require("../utils");
+
+const uploadData = function(bucketName, calendarData) {
+  return uploadTo(
+    bucketName,
+    (today, hash) =>
+      `farset-labs-calendar__${today.valueOf()}__${hash}.json`,
+    calendarData
+  );
+};
 
 module.exports.produce = async (event, context, callback) => {
   try {

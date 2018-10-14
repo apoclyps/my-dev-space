@@ -1,12 +1,8 @@
 "use strict";
 
-const {
-  createHash,
-  getDateTimePathFor,
-  getFromWeb,
-  setInS3
-} = require("aws-lambda-data-utils");
-const { bucketName, getEventsUrl } = require("./config");
+const { getFromWeb } = require("aws-lambda-data-utils");
+const { buckets, getEventsUrl } = require("../config");
+const { uploadTo } = require("../utils");
 
 const getErrors = function(eventsPages) {
   return eventsPages.reduce(function(errors, eventsPage) {
@@ -30,20 +26,10 @@ const getFromApi = async function() {
   return Promise.all([initialResponse].concat(requests));
 };
 
-const uploadTo = function(createFilename, data) {
-  const fileContents = JSON.stringify(data);
-  const today = new Date();
-  const hash = createHash(fileContents);
-  const prefix = getDateTimePathFor(today);
-  const filename = createFilename(today, hash);
-  const filePath = `${prefix}/${filename}`;
-
-  return setInS3(prefix, bucketName, filePath, fileContents);
-};
-
-const uploadData = function(eventsPages) {
+const uploadData = function(bucketName, eventsPages) {
   return eventsPages.map(function(eventsPage, index) {
     return uploadTo(
+      bucketName,
       (today, hash) =>
         `eventbrite-events-page-${index + 1}__${today.valueOf()}__${hash}.json`,
       eventsPage
@@ -63,10 +49,11 @@ module.exports.produce = async (event, context, callback) => {
     }
 
     // Write captured data to S3
-    const uploads = uploadData(eventsPages);
+    const { producerBucket } = buckets();
+    const uploads = uploadData(producerBucket, eventsPages);
     const message = (await Promise.all(uploads)).map(({ key }) => key);
 
-    callback(null, { message, event });
+    callback(null, { message });
   } catch (err) {
     callback(err, null);
   }
