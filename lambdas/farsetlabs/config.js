@@ -1,11 +1,6 @@
+const { addYear, convert } = require("./utils");
+
 const CALENDAR_ID = 'farsetlabs.org.uk_srmqnkn373auq51u00s2nijrq8%40group.calendar.google.com'
-
-const addYear = (date) => new Date(date.setFullYear(date.getFullYear() + 1));
-
-const convert = params =>
-  Object.entries(params)
-    .map(([key, val]) => `${key}=${val}`)
-    .join("&");
 
 const eventsApi = `https://www.googleapis.com/calendar/v3/calendars/${CALENDAR_ID}/events`;
 const eventsParams = () =>
@@ -19,6 +14,9 @@ const eventsParams = () =>
   });
 
 module.exports = {
-  bucketName: "farsetlabs-events-bucket",
+  buckets: () => ({
+    producerBucket: "muxer-produced-events-farsetlabs",
+    eventsBucket: "muxer-transformed-events"
+  }),
   getEventsUrl: () => `${eventsApi}?${eventsParams()}`
 };

@@ -1,8 +1,9 @@
 {
-  "name": "pull-farsetlabs-events",
+  "name": "muxer-pull-events-farsetlabs",
   "version": "1.0.0",
   "description": "Pull Farset Labs events data",
   "dependencies": {
-    "aws-lambda-data-utils": "^1.0.0"
+    "aws-lambda-data-utils": "^1.0.0",
+    "jsonschema": "^1.2.4"
   }
 }
