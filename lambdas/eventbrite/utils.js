@@ -15,8 +15,6 @@ const uploadTo = function(bucketName, createFilename, data) {
   return setInS3(prefix, bucketName, filePath, fileContents);
 };
 
-const addYear = (date) => new Date(date.setFullYear(date.getFullYear() + 1));
-
 const convert = params =>
   Object.entries(params)
     .map(([key, val]) => `${key}=${val}`)
@@ -24,6 +22,5 @@ const convert = params =>
 
 module.exports = {
   uploadTo,
-  addYear,
   convert
 }
