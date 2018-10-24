@@ -17,19 +17,11 @@ videos_blueprint = Blueprint("videos", __name__)
 
 def extract_topics(topics):
     """Creates a list of topics from a given list."""
-    topics_list = []
-    for topic in topics:
-        if topic:
-            topics_list.append(Topic(name=str(topic)))
-    return topics_list
+    return [Topic(name=str(topic)) for topic in topics if topic]
 
 
 def extract_channels(channels):
-    results = []
-    for value in channels:
-        if value:
-            results.append(value)
-    return results
+    return [value for value in channels if value]
 
 
 @videos_blueprint.route("/", methods=["GET", "POST"])

@@ -19,19 +19,11 @@ DEFAULT_PAGE_SIZE = 500
 
 def extract_topics(topics):
     """Creates a list of topics from a given list."""
-    topics_list = []
-    for topic in topics:
-        if topic:
-            topics_list.append(Topic(name=str(topic)))
-    return topics_list
+    return [Topic(name=str(topic)) for topic in topics if topic]
 
 
 def extract_enteries(entries):
-    entry_list = []
-    for entry in entries:
-        if entry:
-            entry_list.append(Entry(type=str(entry)))
-    return entry_list
+    return [Entry(type=str(entry)) for entry in entries if entry]
 
 
 @events_blueprint.route("/", methods=["GET", "POST"])

@@ -14,18 +14,12 @@ speakers_blueprint = Blueprint("speakers", __name__)
 
 def extract_topics(topics):
     """Creates a list of topics from a given list."""
-    topics_list = []
-    for topic in topics:
-        topics_list.append(Topic(name=str(topic)))
-    return topics_list
+    return [Topic(name=str(topic)) for topic in topics]
 
 
 def extract_diversification(diversification):
     """Creates a list of diversification from a given list."""
-    diversification_list = []
-    for diversity in diversification:
-        diversification_list.append(Diversity(name=diversity, description=""))
-    return diversification_list
+    return [Diversity(name=diversity, description="") for diversity in diversification]
 
 
 @speakers_blueprint.route("/", methods=["GET", "POST"])
