@@ -16,6 +16,7 @@ pyjwt = "==1.6.4"
 newrelic = "==4.4.1.104"
 flask-caching = "==1.4.0"
 flask-compress = "*"
+itsdangerous = "*"
 
 [dev-packages]
 black = "==18.6b2"
