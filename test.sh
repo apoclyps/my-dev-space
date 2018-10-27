@@ -16,52 +16,94 @@ else
   exit 1
 fi
 
+build() {
+  image_name=$1
+  docker-compose -f $file build $image_name
+}
+
+section_start() {
+  start_time=`date +%s`
+  echo -en "travis_fold:start:$1\\r"
+  echo $1
+  set -x
+}
+
+section_end() {
+  set +x
+  echo -en "travis_fold:end:$1\\r"
+  end_time=`date +%s`
+  runtime=$((end_time - start_time))
+  echo "Took $runtime seconds"
+  echo "-------------------------"
+}
+
 inspect() {
   if [ $1 -ne 0 ]; then
     fails="${fails} $2"
   fi
 }
 
-set -x
-
-# allows time for the docker containers to come up prior to running tests
+# Build and start containers
+section_start 'setup'
+docker-compose -f $file up --build -d
 if [[ "${env}" != "dev" ]]; then
-  sleep 15
+  sleep 15 # allow time for the docker containers to come up prior to running tests
 fi
+section_end 'setup'
 
 # Users service
-docker-compose -f $file run users-service py.test --black --pep8 --flakes -vv --mccabe --cov=project --cov-report=term-missing --junitxml=test-results/results.xml
-inspect $? users-test
+image='users-service'
+section_start $image
+build $image
+docker-compose -f $file run $image py.test --black --pep8 --flakes -vv --mccabe --cov=project --cov-report=term-missing --junitxml=test-results/results.xml
+inspect $? $image
+section_end $image
 
 # Events service
-docker-compose -f $file run events-service py.test --black --pep8 --flakes -vv --mccabe --cov=project --cov-report=term-missing --junitxml=test-results/results.xml
-inspect $? events-test
+image='events-service'
+section_start $image
+build $image
+docker-compose -f $file run $image py.test --black --pep8 --flakes -vv --mccabe --cov=project --cov-report=term-missing --junitxml=test-results/results.xml
+inspect $? $image
+section_end $image
 
 # Client
-docker-compose -f $file build client-test
+image='client-test'
+section_start $image
+build $image
 docker-compose -f $file run client-test npm run lint
 inspect $? client-lint
 CI=true docker-compose -f $file run client-test npm test -- --coverage
-inspect $? client-test
+inspect $? $image
+section_end $image
 
 # Lambdas
-docker-compose -f $file build lambdas-test
-docker-compose -f $file run lambdas-test npm run lint
+image='lambdas-test'
+section_start $image
+build $image
+docker-compose -f $file run $image npm run lint
 inspect $? lambdas-lint
-docker-compose -f $file run lambdas-test npm test
-inspect $? lambdas-test
+docker-compose -f $file run $image npm test
+inspect $? $image
+section_end $image
 
 # Integration tests
+section_start 'integration-test'
 if [[ "${env}" != "stage" ]]; then
   testcafe chrome e2e
-  inspect $? e2e
+  inspect $? integration-test
 else
   testcafe chrome e2e/index.test.js
-  inspect $? e2e
+  inspect $? integration-test
 fi
+section_end 'integration-test'
 
-set +x
+# Stop containers
+section_start 'teardown'
+docker-compose -f $file down
+section_end 'teardown'
 
+# Output success / failure
 if [ -n "${fails}" ]; then
   echo "Tests failed: ${fails}"
   exit 1
