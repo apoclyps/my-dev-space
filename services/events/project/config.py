@@ -14,6 +14,8 @@ class BaseConfig:
     BCRYPT_LOG_ROUNDS = 13
     TOKEN_EXPIRATION_DAYS = 30
     TOKEN_EXPIRATION_SECONDS = 0
+    DEBUG_TB_ENABLED = False
+    DEBUG_TB_INTERCEPT_REDIRECTS = False
 
 
 class DevelopmentConfig(BaseConfig):
@@ -22,6 +24,7 @@ class DevelopmentConfig(BaseConfig):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
     BCRYPT_LOG_ROUNDS = 4
+    DEBUG_TB_ENABLED = True
 
 
 class TestingConfig(BaseConfig):

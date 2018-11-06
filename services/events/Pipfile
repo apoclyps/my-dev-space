@@ -17,6 +17,7 @@ newrelic = "==4.4.1.104"
 flask-caching = "==1.4.0"
 flask-compress = "*"
 itsdangerous = "*"
+flask-debugtoolbar = "*"
 
 [dev-packages]
 black = "==18.6b2"
