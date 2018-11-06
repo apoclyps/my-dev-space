@@ -48,6 +48,11 @@ def create_app():
     app.register_blueprint(developers_blueprint)
     app.register_blueprint(calendar_blueprint)
 
+    if app.config["DEBUG"] is True:
+        from project.api.debug import debug_blueprint
+
+        app.register_blueprint(debug_blueprint)
+
     # shell context for flask cli
     @app.shell_context_processor
     def ctx():

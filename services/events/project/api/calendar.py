@@ -8,6 +8,7 @@ from flask import Blueprint, jsonify, request
 # local
 from project.api.models import Event
 from project import cache
+from flask import render_template
 
 calendar_blueprint = Blueprint("calendar", __name__)
 
@@ -35,3 +36,8 @@ def get_all_calendar():
         "data": [_transform(index, event) for index, event in enumerate(events)],
     }
     return jsonify(response_object), 200
+
+
+@calendar_blueprint.route("/events/test", methods=["GET"])
+def index():
+    return render_template("index.html")
