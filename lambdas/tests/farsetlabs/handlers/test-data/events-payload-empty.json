@@ -1,0 +1,10 @@
+{
+  "kind": "calendar#events",
+  "etag": "\"p32s8v2v4qvudq0g\"",
+  "summary": "Farset Labs Events",
+  "updated": "2018-10-10T20:13:23.715Z",
+  "timeZone": "Europe/London",
+  "accessRole": "reader",
+  "defaultReminders": [],
+  "items": []
+}

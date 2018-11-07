@@ -1,0 +1,178 @@
+{
+	"kind": "calendar#events",
+	"etag": "\"p32s8v2v4qvudq0g\"",
+	"summary": "Farset Labs Events",
+	"updated": "2018-10-10T20:13:23.715Z",
+	"timeZone": "Europe/London",
+	"accessRole": "reader",
+	"defaultReminders": [],
+	"items": [
+    {
+      "kind": "calendar#event",
+      "etag": "\"3053797656240000\"",
+      "id": "4b471u35laf5kgeegsjjku3lu8_20181018T180000Z",
+      "status": "confirmed",
+      "htmlLink": "https://www.google.com/calendar/event?eid=NGI0NzF1MzVsYWY1a2dlZWdzamprdTNsdThfMjAxODEwMThUMTgwMDAwWiBmYXJzZXRsYWJzLm9yZy51a19zcm1xbmtuMzczYXVxNTF1MDBzMm5panJxOEBn",
+      "created": "2018-05-21T10:21:12.000Z",
+      "updated": "2018-05-21T10:33:48.120Z",
+      "summary": "Code Co-op NI",
+      "description": "https://www.meetup.com/CodeCoop-NI",
+      "location": "Event Space, Farset Labs",
+      "creator": {
+        "email": "glenn.davidson@farsetlabs.org.uk"
+      },
+      "organizer": {
+        "email": "farsetlabs.org.uk_srmqnkn373auq51u00s2nijrq8@group.calendar.google.com",
+        "displayName": "Farset Labs Events",
+        "self": true
+      },
+      "start": {
+        "dateTime": "2018-10-18T19:00:00+01:00",
+        "timeZone": "Europe/London"
+      },
+      "end": {
+        "dateTime": "2018-10-18T21:00:00+01:00",
+        "timeZone": "Europe/London"
+      },
+      "recurringEventId": "4b471u35laf5kgeegsjjku3lu8_R20180621T180000",
+      "originalStartTime": {
+        "dateTime": "2018-10-18T19:00:00+01:00",
+        "timeZone": "Europe/London"
+      },
+      "iCalUID": "4b471u35laf5kgeegsjjku3lu8_R20180621T180000@google.com",
+      "sequence": 1
+    }, {
+      "kind": "calendar#event",
+      "etag": "\"3011616132534000\"",
+      "id": "0mdpdpn59po7htqvf7o9bercmt_20181019T170000Z",
+      "status": "confirmed",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MG1kcGRwbjU5cG83aHRxdmY3bzliZXJjbXRfMjAxODEwMTlUMTcwMDAwWiBmYXJzZXRsYWJzLm9yZy51a19zcm1xbmtuMzczYXVxNTF1MDBzMm5panJxOEBn",
+      "created": "2017-09-19T08:01:05.000Z",
+      "updated": "2017-09-19T08:01:06.267Z",
+      "summary": "Farset Labs Dojo 2017",
+      "description": "http://www.farsetlabs.org.uk/events/coderdojo.html",
+      "location": "Farset Labs, Weavers Court, Linfield Rd, Belfast BT12 5GH, UK, Event Space",
+      "creator": {
+        "email": "bolster@farsetlabs.org.uk",
+        "displayName": "Andrew Bolster"
+      },
+      "organizer": {
+        "email": "farsetlabs.org.uk_srmqnkn373auq51u00s2nijrq8@group.calendar.google.com",
+        "displayName": "Farset Labs Events",
+        "self": true
+      },
+      "start": {
+        "dateTime": "2018-10-19T18:00:00+01:00"
+      },
+      "end": {
+        "dateTime": "2018-10-19T20:20:00+01:00"
+      },
+      "recurringEventId": "0mdpdpn59po7htqvf7o9bercmt",
+      "originalStartTime": {
+        "dateTime": "2018-10-19T18:00:00+01:00",
+        "timeZone": "Europe/London"
+      },
+      "iCalUID": "0mdpdpn59po7htqvf7o9bercmt@google.com",
+      "sequence": 0
+    }, {
+      "kind": "calendar#event",
+      "etag": "\"3067855723588000\"",
+      "id": "316kag8mfr56qt58k3guo4ejsr",
+      "status": "confirmed",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MzE2a2FnOG1mcjU2cXQ1OGszZ3VvNGVqc3IgZmFyc2V0bGFicy5vcmcudWtfc3JtcW5rbjM3M2F1cTUxdTAwczJuaWpycThAZw",
+      "created": "2018-08-10T19:01:39.000Z",
+      "updated": "2018-08-10T19:04:21.794Z",
+      "summary": "Code Co-op: Halloween Cyber-Security Challenge",
+      "description": "Halloween Cyber Security Challenge (Because vulnerability is scary)\nCode Co-op: https://www.meetup.com/CodeCoop-NI/\nContact Zoe or Art for more details.",
+      "location": "Farset Labs, Weavers Court, Linfield Rd, Belfast BT12 5GH, UK, Event Space",
+      "creator": {
+        "email": "glenn.davidson@farsetlabs.org.uk"
+      },
+      "organizer": {
+        "email": "farsetlabs.org.uk_srmqnkn373auq51u00s2nijrq8@group.calendar.google.com",
+        "displayName": "Farset Labs Events",
+        "self": true
+      },
+      "start": {
+        "dateTime": "2018-10-30T18:00:00Z"
+      },
+      "end": {
+        "dateTime": "2018-10-30T21:00:00Z"
+      },
+      "iCalUID": "316kag8mfr56qt58k3guo4ejsr@google.com",
+      "sequence": 0,
+      "extendedProperties": {
+        "private": {
+          "everyoneDeclinedDismissed": "-1"
+        }
+      }
+    }, {
+      "kind": "calendar#event",
+      "etag": "\"2949642420790000\"",
+      "status": "confirmed",
+      "htmlLink": "https://www.google.com/calendar/event?eid=c2g2NmxnNG1uNHVqNzdhM25rN29kaWVwMTRfMjAxODExMDVUMTkwMDAwWiBmYXJzZXRsYWJzLm9yZy51a19zcm1xbmtuMzczYXVxNTF1MDBzMm5panJxOEBn",
+      "created": "2013-10-29T11:11:12.000Z",
+      "updated": "2016-09-25T16:33:30.395Z",
+      "summary": "Town Hall",
+      "description": " ",
+      "location": "Event Space - Farset Labs, Linfield Road, Belfast, United Kingdom",
+      "creator": {
+        "email": "dylan@farsetlabs.org.uk",
+        "displayName": "Dylan Wylie"
+      },
+      "organizer": {
+        "email": "farsetlabs.org.uk_srmqnkn373auq51u00s2nijrq8@group.calendar.google.com",
+        "displayName": "Farset Labs Events",
+        "self": true
+      },
+      "start": {
+        "dateTime": "2018-11-05T19:00:00Z",
+        "timeZone": "Europe/London"
+      },
+      "end": {
+        "dateTime": "2018-11-05T21:00:00Z",
+        "timeZone": "Europe/London"
+      },
+      "recurringEventId": "sh66lg4mn4uj77a3nk7odiep14_R20161003T180000",
+      "originalStartTime": {
+        "dateTime": "2018-11-05T19:00:00Z",
+        "timeZone": "Europe/London"
+      },
+      "iCalUID": "sh66lg4mn4uj77a3nk7odiep14_R20161003T180000@google.com",
+      "sequence": 0
+    }, {
+      "kind": "calendar#event",
+      "etag": "\"3077446167346000\"",
+      "id": "0f6joijanqo2do55253lp6a6hh",
+      "status": "confirmed",
+      "htmlLink": "https://www.google.com/calendar/event?eid=MGY2am9pamFucW8yZG81NTI1M2xwNmE2aGggZmFyc2V0bGFicy5vcmcudWtfc3JtcW5rbjM3M2F1cTUxdTAwczJuaWpycThAZw",
+      "created": "2018-10-05T07:04:40.000Z",
+      "updated": "2018-10-05T07:04:43.673Z",
+      "summary": "Design Science [Belfast Design Week]",
+      "description": "Details TBC",
+      "location": "Event Space",
+      "creator": {
+        "email": "david@farsetlabs.org.uk",
+        "displayName": "David Kane"
+      },
+      "organizer": {
+        "email": "farsetlabs.org.uk_srmqnkn373auq51u00s2nijrq8@group.calendar.google.com",
+        "displayName": "Farset Labs Events",
+        "self": true
+      },
+      "start": {
+        "dateTime": "2018-11-08T19:00:00Z"
+      },
+      "end": {
+        "dateTime": "2018-11-08T21:00:00Z"
+      },
+      "iCalUID": "0f6joijanqo2do55253lp6a6hh@google.com",
+      "sequence": 0,
+      "extendedProperties": {
+        "private": {
+          "everyoneDeclinedDismissed": "-1"
+        }
+      }
+    }
+  ]
+}
