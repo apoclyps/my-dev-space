@@ -1,4 +1,4 @@
-const { convert } = require("./utils");
+const { convert } = require("@muxer/lambda-utils");
 
 const EVENTBRITE_TECH_CATEGORY = 102;
 
