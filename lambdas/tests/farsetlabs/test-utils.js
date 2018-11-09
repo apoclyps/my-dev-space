@@ -3,10 +3,13 @@ jest.mock("../../farsetlabs/node_modules/aws-lambda-data-utils", () => ({
   getFromS3: jest.fn()
 }));
 
-jest.mock("../../farsetlabs/utils", () =>
-  Object.assign(require.requireActual("../../farsetlabs/utils"), {
-    uploadTo: jest.fn()
-  })
+jest.mock("../../farsetlabs/node_modules/@muxer/lambda-utils", () =>
+  Object.assign(
+    require.requireActual("../../farsetlabs/node_modules/@muxer/lambda-utils"),
+    {
+      uploadTo: jest.fn()
+    }
+  )
 );
 
 const prefix = "../../../farsetlabs";

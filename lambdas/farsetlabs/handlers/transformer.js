@@ -1,10 +1,10 @@
 "use strict";
 
-const eventSchema = require("@muxer/event-schema");
 const { getFromS3 } = require("aws-lambda-data-utils");
+const { uploadTo } = require("@muxer/lambda-utils");
 const { validate } = require("jsonschema");
+const eventSchema = require("@muxer/event-schema");
 const { buckets } = require("../config");
-const { uploadTo } = require("../utils");
 
 const transformEvent = function(
   defaults,

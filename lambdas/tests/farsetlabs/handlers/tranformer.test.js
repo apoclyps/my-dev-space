@@ -1,6 +1,6 @@
 const { prefix, resolved } = require("../test-utils");
 const { getFromS3 } = require(`${prefix}/node_modules/aws-lambda-data-utils`);
-const { uploadTo } = require(`${prefix}/utils`);
+const { uploadTo } = require(`${prefix}/node_modules/@muxer/lambda-utils`);
 const transformer = require(`${prefix}/handlers/transformer`);
 
 const requireData = filename =>

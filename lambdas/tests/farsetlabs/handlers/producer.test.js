@@ -2,7 +2,7 @@ process.env.GOOGLE_CALENDAR_API_TOKEN = "google-calendar-token-abc123";
 
 const { prefix, resolved, resolvedResponse } = require("../test-utils");
 const { getFromWeb } = require(`${prefix}/node_modules/aws-lambda-data-utils`);
-const { uploadTo } = require(`${prefix}/utils`);
+const { uploadTo } = require(`${prefix}/node_modules/@muxer/lambda-utils`);
 const producer = require(`${prefix}/handlers/producer`);
 
 const apicall =
