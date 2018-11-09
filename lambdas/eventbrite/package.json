@@ -8,6 +8,7 @@
   },
   "private": true,
   "dependencies": {
+    "@muxer/event-schema": "^1.0.0",
     "aws-lambda-data-utils": "^1.0.0",
     "jsonschema": "^1.2.4"
   }
