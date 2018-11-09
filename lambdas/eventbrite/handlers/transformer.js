@@ -1,10 +1,10 @@
 "use strict";
 
 const eventSchema = require("@muxer/event-schema");
+const { uploadTo } = require("@muxer/lambda-utils");
 const { getFromS3 } = require("aws-lambda-data-utils");
 const { validate } = require("jsonschema");
 const { buckets } = require("../config");
-const { uploadTo } = require("../utils");
 
 const getLogoFrom = function({ logo }) {
   if (!logo) return undefined;
