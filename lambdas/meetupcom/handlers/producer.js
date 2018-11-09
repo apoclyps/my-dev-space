@@ -1,8 +1,8 @@
 "use strict";
 
 const { getFromWeb } = require("aws-lambda-data-utils");
+const { uploadTo } = require("@muxer/lambda-utils");
 const { buckets, getGroupsUrl, getEventsUrl } = require("../config");
-const { uploadTo } = require("../utils");
 
 const getErrors = function(groupsEvents) {
   return groupsEvents.reduce(function(errors, groupEvents) {
