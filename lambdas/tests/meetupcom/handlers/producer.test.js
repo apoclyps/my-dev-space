@@ -74,14 +74,7 @@ describe("Meetup.com Producer", function() {
       });
     });
 
-    it("does not upload data", function(done) {
-      producer.produce(event, context, function() {
-        expect(uploadTo).not.toHaveBeenCalled();
-        done();
-      });
-    });
-
-    it("return an error and no file paths", function(done) {
+    it("returns an error and no file paths", function(done) {
       producer.produce(event, context, function(err, response) {
         expect(err).toEqual([
           {
@@ -90,6 +83,13 @@ describe("Meetup.com Producer", function() {
           }
         ]);
         expect(response).toBe(null);
+        done();
+      });
+    });
+
+    it("does not upload data", function(done) {
+      producer.produce(event, context, function() {
+        expect(uploadTo).not.toHaveBeenCalled();
         done();
       });
     });
@@ -180,7 +180,7 @@ describe("Meetup.com Producer", function() {
         });
       });
 
-      it("return the errors and no file paths", function(done) {
+      it("returns the errors and no file paths", function(done) {
         producer.produce(event, context, function(err, response) {
           expect(err).toEqual([
             [{ code: "auth_fail", message: "Invalid signature" }]
