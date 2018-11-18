@@ -1,0 +1,328 @@
+[
+  {
+    "score": 1,
+    "id": 18944424,
+    "name": "AWS User Group Belfast",
+    "status": "active",
+    "link": "https://www.meetup.com/AWS-Usergroup-Belfast/",
+    "urlname": "AWS-Usergroup-Belfast",
+    "description": "<p>This is a group for all-things AWS in Belfast. We're a community of users, developers and business professionals meeting to share ideas &amp; learn from each other and from leading figures in the AWS technology space. Our aim is to become an important resource for technical &amp; business professionals who want to stay up to speed with developments in AWS Cloud and related technologies. Look out for more events and announcements in 2015! For sponsorship &amp; speaking requests please contact awsbelfast@gmail.com</p>",
+    "created": 1442591614000,
+    "city": "Belfast",
+    "untranslated_city": "Belfast",
+    "country": "GB",
+    "localized_country_name": "United Kingdom",
+    "localized_location": "Belfast, United Kingdom",
+    "state": "R3",
+    "join_mode": "open",
+    "visibility": "public",
+    "lat": 54.6,
+    "lon": -5.93,
+    "members": 489,
+    "organizer": {
+      "id": 139596322,
+      "name": "Ronan OC",
+      "bio": "",
+      "photo": {
+        "id": 187849042,
+        "highres_link": "https://secure.meetupstatic.com/photos/member/b/f/9/2/highres_187849042.jpeg",
+        "photo_link": "https://secure.meetupstatic.com/photos/member/b/f/9/2/member_187849042.jpeg",
+        "thumb_link": "https://secure.meetupstatic.com/photos/member/b/f/9/2/thumb_187849042.jpeg",
+        "type": "member",
+        "base_url": "https://secure.meetupstatic.com"
+      }
+    },
+    "who": "Members",
+    "key_photo": {
+      "id": 451627771,
+      "highres_link": "https://secure.meetupstatic.com/photos/event/1/e/5/b/highres_451627771.jpeg",
+      "photo_link": "https://secure.meetupstatic.com/photos/event/1/e/5/b/600_451627771.jpeg",
+      "thumb_link": "https://secure.meetupstatic.com/photos/event/1/e/5/b/thumb_451627771.jpeg",
+      "type": "event",
+      "base_url": "https://secure.meetupstatic.com"
+    },
+    "timezone": "Europe/Belfast",
+    "next_event": {
+      "id": "253784234",
+      "name": "AWS | Belfast Meetup - THU, 6th SEPTEMBER @ 6pm!",
+      "yes_rsvp_count": 128,
+      "time": 1536253200000,
+      "utc_offset": 3600000
+    },
+    "category": {
+      "id": 34,
+      "name": "Tech",
+      "shortname": "tech",
+      "sort_name": "Tech"
+    },
+    "meta_category": {
+      "id": 292,
+      "shortname": "tech",
+      "name": "Tech",
+      "sort_name": "Tech",
+      "photo": {
+        "id": 450131949,
+        "highres_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/highres_450131949.jpeg",
+        "photo_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/600_450131949.jpeg",
+        "thumb_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/thumb_450131949.jpeg",
+        "type": "event",
+        "base_url": "https://secure.meetupstatic.com"
+      },
+      "category_ids": [
+        34
+      ]
+    },
+    "pro_network": {
+      "name": "AWS Communities",
+      "urlname": "aws",
+      "number_of_groups": 6,
+      "network_url": "https://www.meetup.com/pro/aws/"
+    }
+  },
+  {
+    "score": 1,
+    "id": 11013632,
+    "name": "Women Who Code Belfast",
+    "status": "active",
+    "link": "https://www.meetup.com/Women-Who-Code-Belfast/",
+    "urlname": "Women-Who-Code-Belfast",
+    "description": "<p>Join us by attending a WWCode event or signing up at <a href=\"http://www.womenwhocode.com\">www.womenwhocode.com</a>.</p>\n<p>Women Who Code is the largest and most active community of engineers dedicated to inspiring women to excel in technology careers. We envision a world where women are representative as technical executives, founders, VCs, board members, and software engineers. Our programs are designed to get you there</p>\n<p>Who should join?</p>\n<p>Our community is for professional women in technology careers, including software engineers, developers, UX/UI designers, data scientists and more. Current and aspiring coders are welcome. Bring your laptop and a friend!</p>\n<p>What to expect? </p>\n<p>Our events offer free hands on technical events, study groups, panel discussions, lightning talks, and keynotes featuring influential tech industry experts, innovators, and investors. We help you build the skills you need to raise your professional profile and achieve greater career success. </p>\n<p>Support us: </p>\n<p>WWCode relies on donations to support this catalytic movement. Funding directly impacts our ability to deliver programs and expand to more cities, ensuring that even more women have the opportunity to excel in tech careers. womenwhocode.com/donate</p>\n<p>Share a Job with our Community:</p>\n<p>Post your jobs on the Women Who Code Job Board and hire from our exclusive community of technical professionals. Get started at womenwhocode.com/companies.</p>\n<p>Code of Conduct:</p>\n<p>WWCode is an inclusive community, dedicated to providing an empowering experience for everyone who participates in or supports our community, regardless of gender, gender identity and expression, sexual orientation, ability, physical appearance, body size, race, ethnicity, age, religion, socioeconomic status, caste, creed, political affiliation, or preferred programming language(s). Our events are intended to inspire women to excel in technology careers, and anyone who is there for this purpose is welcome. We do not tolerate harassment of members in any form. </p>\n<p>Our Code of Conduct applies to all WWCode events and online communities. Read the full version and access our incident report form at <a href=\"http://www.womenwhocode.com/codeofconduct\">www.womenwhocode.com/codeofconduct</a> </p>\n<p>Terms of Service:</p>\n<p>Everyone who participates in our community agrees to abide by our Terms of Service. Read it at <a href=\"http://wwww.womenwhocode.com/tos\">www.womenwhocode.com/tos</a> </p>\n<p>Privacy Policy:</p>\n<p>Everyone who participates in our community agrees to abide by our Privacy Policy.<br><span>Read it at www.womenwhocode.com/privacy-policy</span></p>\n<span>Connect with #WWCode Belfast:</span>\n<span><br></span>\n<p>womenwhocode.com/belfast <br>facebook.com/facebook.com/groups/WWCodeBelfast/&nbsp; <br>twitter.com/wwcbelfast</p>\n<p>#WWCode Global Network</p>\n<p>facebook.com/womenwhocode&nbsp; <br>twitter.com/womenwhocode&nbsp; <br><a>bit.ly/WWCodeReview&nbsp;</a>&nbsp; <br>github.com/orgs/WomenWhoCode&nbsp; <br>womenwhocode.com</p>\n<br>\n<p><a href=\"http://fb.com/womenwhocode\"></a></p>",
+    "created": 1383866929000,
+    "city": "Belfast",
+    "untranslated_city": "Belfast",
+    "country": "GB",
+    "localized_country_name": "United Kingdom",
+    "localized_location": "Belfast, United Kingdom",
+    "state": "R3",
+    "join_mode": "open",
+    "visibility": "public",
+    "lat": 54.59,
+    "lon": -5.94,
+    "members": 922,
+    "organizer": {
+      "id": 129339582,
+      "name": "Women Who Code",
+      "bio": "",
+      "photo": {
+        "id": 172594242,
+        "highres_link": "https://secure.meetupstatic.com/photos/member/8/5/c/2/highres_172594242.jpeg",
+        "photo_link": "https://secure.meetupstatic.com/photos/member/8/5/c/2/member_172594242.jpeg",
+        "thumb_link": "https://secure.meetupstatic.com/photos/member/8/5/c/2/thumb_172594242.jpeg",
+        "type": "member",
+        "base_url": "https://secure.meetupstatic.com"
+      }
+    },
+    "who": "Coders",
+    "group_photo": {
+      "id": 431686980,
+      "highres_link": "https://secure.meetupstatic.com/photos/event/b/7/8/4/highres_431686980.jpeg",
+      "photo_link": "https://secure.meetupstatic.com/photos/event/b/7/8/4/600_431686980.jpeg",
+      "thumb_link": "https://secure.meetupstatic.com/photos/event/b/7/8/4/thumb_431686980.jpeg",
+      "type": "event",
+      "base_url": "https://secure.meetupstatic.com"
+    },
+    "key_photo": {
+      "id": 443933459,
+      "highres_link": "https://secure.meetupstatic.com/photos/event/d/0/d/3/highres_443933459.jpeg",
+      "photo_link": "https://secure.meetupstatic.com/photos/event/d/0/d/3/600_443933459.jpeg",
+      "thumb_link": "https://secure.meetupstatic.com/photos/event/d/0/d/3/thumb_443933459.jpeg",
+      "type": "event",
+      "base_url": "https://secure.meetupstatic.com"
+    },
+    "timezone": "Europe/Belfast",
+    "next_event": {
+      "id": "253524217",
+      "name": "Tech Talk Thursday at Deloitte",
+      "yes_rsvp_count": 45,
+      "time": 1536253200000,
+      "utc_offset": 3600000
+    },
+    "category": {
+      "id": 34,
+      "name": "Tech",
+      "shortname": "tech",
+      "sort_name": "Tech"
+    },
+    "meta_category": {
+      "id": 292,
+      "shortname": "tech",
+      "name": "Tech",
+      "sort_name": "Tech",
+      "photo": {
+        "id": 450131949,
+        "highres_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/highres_450131949.jpeg",
+        "photo_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/600_450131949.jpeg",
+        "thumb_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/thumb_450131949.jpeg",
+        "type": "event",
+        "base_url": "https://secure.meetupstatic.com"
+      },
+      "category_ids": [
+        34
+      ]
+    }
+  },
+  {
+    "score": 1,
+    "id": 8819612,
+    "name": "Belfast Selenium Meetup Group",
+    "status": "active",
+    "link": "https://www.meetup.com/Belfast-Selenium-Meetup-Group/",
+    "urlname": "Belfast-Selenium-Meetup-Group",
+    "description": "<p>The Belfast Selenium Meetup Group is a place where new and existing Selenium users can come together to share ideas, learn, network, or just have a good time. Our focus is on Selenium and any related topics that extend through related areas of use, such as Agile, Test-Driven Development, Continuous Integration, Continuous Deployment, building maintainable automation and much more.</p>",
+    "created": 1370575338000,
+    "city": "Belfast",
+    "untranslated_city": "Belfast",
+    "country": "GB",
+    "localized_country_name": "United Kingdom",
+    "localized_location": "Belfast, United Kingdom",
+    "state": "R3",
+    "join_mode": "open",
+    "visibility": "public",
+    "lat": 54.59,
+    "lon": -5.93,
+    "members": 719,
+    "organizer": {
+      "id": 86400732,
+      "name": "Hugh McCamphill",
+      "bio": "",
+      "photo": {
+        "id": 278744091,
+        "highres_link": "https://secure.meetupstatic.com/photos/member/a/c/3/b/highres_278744091.jpeg",
+        "photo_link": "https://secure.meetupstatic.com/photos/member/a/c/3/b/member_278744091.jpeg",
+        "thumb_link": "https://secure.meetupstatic.com/photos/member/a/c/3/b/thumb_278744091.jpeg",
+        "type": "member",
+        "base_url": "https://secure.meetupstatic.com"
+      }
+    },
+    "who": "Members",
+    "group_photo": {
+      "id": 306247222,
+      "highres_link": "https://secure.meetupstatic.com/photos/event/1/c/3/6/highres_306247222.jpeg",
+      "photo_link": "https://secure.meetupstatic.com/photos/event/1/c/3/6/600_306247222.jpeg",
+      "thumb_link": "https://secure.meetupstatic.com/photos/event/1/c/3/6/thumb_306247222.jpeg",
+      "type": "event",
+      "base_url": "https://secure.meetupstatic.com"
+    },
+    "key_photo": {
+      "id": 306247222,
+      "highres_link": "https://secure.meetupstatic.com/photos/event/1/c/3/6/highres_306247222.jpeg",
+      "photo_link": "https://secure.meetupstatic.com/photos/event/1/c/3/6/600_306247222.jpeg",
+      "thumb_link": "https://secure.meetupstatic.com/photos/event/1/c/3/6/thumb_306247222.jpeg",
+      "type": "event",
+      "base_url": "https://secure.meetupstatic.com"
+    },
+    "timezone": "Europe/Belfast",
+    "next_event": {
+      "id": "254184527",
+      "name": "Appium and React Native with special guest Wim Selles",
+      "yes_rsvp_count": 17,
+      "time": 1537376400000,
+      "utc_offset": 3600000
+    },
+    "category": {
+      "id": 34,
+      "name": "Tech",
+      "shortname": "tech",
+      "sort_name": "Tech"
+    },
+    "meta_category": {
+      "id": 292,
+      "shortname": "tech",
+      "name": "Tech",
+      "sort_name": "Tech",
+      "photo": {
+        "id": 450131949,
+        "highres_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/highres_450131949.jpeg",
+        "photo_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/600_450131949.jpeg",
+        "thumb_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/thumb_450131949.jpeg",
+        "type": "event",
+        "base_url": "https://secure.meetupstatic.com"
+      },
+      "category_ids": [
+        34
+      ]
+    }
+  },
+  {
+    "score": 1,
+    "id": 20229401,
+    "name": "Code Co-Op",
+    "status": "active",
+    "link": "https://www.meetup.com/CodeCoop-NI/",
+    "urlname": "CodeCoop-NI",
+    "description": "<p>A bi-weekly club for adults to come together and work on fun projects to upskill themselves at Farset Labs. Whether you're a beginner who wants an insight into the world of programming, or an experienced programmer who wants to work on a side project in a social setting - all are welcome.</p>\n<p>Bring a laptop and yourself and come get involved! We suggest a <b>£3 donation to Farset Labs</b> for letting us use the venue to get together, tinker and share knowledge.</p>\n<p>Join our conversations on Slack for real-time chat:<br>Go to <a href=\"http://nitech.herokuapp.com/\" class=\"linkified\">http://nitech.herokuapp.com/</a> to join NI Tech &amp; Design, and then find #codeco-op</p>",
+    "created": 1469603863000,
+    "city": "Belfast",
+    "untranslated_city": "Belfast",
+    "country": "GB",
+    "localized_country_name": "United Kingdom",
+    "localized_location": "Belfast, United Kingdom",
+    "state": "R3",
+    "join_mode": "open",
+    "visibility": "public",
+    "lat": 54.6,
+    "lon": -5.93,
+    "members": 887,
+    "organizer": {
+      "id": 203325989,
+      "name": "Farset Labs",
+      "bio": "",
+      "photo": {
+        "id": 258690583,
+        "highres_link": "https://secure.meetupstatic.com/photos/member/7/7/7/7/highres_258690583.jpeg",
+        "photo_link": "https://secure.meetupstatic.com/photos/member/7/7/7/7/member_258690583.jpeg",
+        "thumb_link": "https://secure.meetupstatic.com/photos/member/7/7/7/7/thumb_258690583.jpeg",
+        "type": "member",
+        "base_url": "https://secure.meetupstatic.com"
+      }
+    },
+    "who": "Members",
+    "group_photo": {
+      "id": 452635788,
+      "highres_link": "https://secure.meetupstatic.com/photos/event/d/9/e/c/highres_452635788.jpeg",
+      "photo_link": "https://secure.meetupstatic.com/photos/event/d/9/e/c/600_452635788.jpeg",
+      "thumb_link": "https://secure.meetupstatic.com/photos/event/d/9/e/c/thumb_452635788.jpeg",
+      "type": "event",
+      "base_url": "https://secure.meetupstatic.com"
+    },
+    "key_photo": {
+      "id": 452635757,
+      "highres_link": "https://secure.meetupstatic.com/photos/event/d/9/c/d/highres_452635757.jpeg",
+      "photo_link": "https://secure.meetupstatic.com/photos/event/d/9/c/d/600_452635757.jpeg",
+      "thumb_link": "https://secure.meetupstatic.com/photos/event/d/9/c/d/thumb_452635757.jpeg",
+      "type": "event",
+      "base_url": "https://secure.meetupstatic.com"
+    },
+    "timezone": "Europe/Belfast",
+    "next_event": {
+      "id": "lhmvfpyxmbjb",
+      "name": "Code Co-Op Challenge",
+      "yes_rsvp_count": 13,
+      "time": 1536256800000,
+      "utc_offset": 3600000
+    },
+    "category": {
+      "id": 34,
+      "name": "Tech",
+      "shortname": "tech",
+      "sort_name": "Tech"
+    },
+    "meta_category": {
+      "id": 292,
+      "shortname": "tech",
+      "name": "Tech",
+      "sort_name": "Tech",
+      "photo": {
+        "id": 450131949,
+        "highres_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/highres_450131949.jpeg",
+        "photo_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/600_450131949.jpeg",
+        "thumb_link": "https://secure.meetupstatic.com/photos/event/2/e/a/d/thumb_450131949.jpeg",
+        "type": "event",
+        "base_url": "https://secure.meetupstatic.com"
+      },
+      "category_ids": [
+        34
+      ]
+    }
+  }
+]
