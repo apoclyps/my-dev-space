@@ -1,0 +1,42 @@
+[
+  {
+    "created": 1492609621000,
+    "duration": 8100000,
+    "id": "239325936",
+    "name": "Test name 1",
+    "rsvp_limit": 140,
+    "status": "past",
+    "time": 1495729800000,
+    "local_date": "2017-05-25",
+    "local_time": "17:30",
+    "updated": 1496153858000,
+    "utc_offset": 3600000,
+    "waitlist_count": 0,
+    "yes_rsvp_count": 91,
+    "venue": null,
+    "group": null,
+    "link": "",
+    "description": "Test description 1",
+    "visibility": "public"
+  },
+  {
+    "created": 1532946640000,
+    "duration": 8100000,
+    "id": "253297474",
+    "name": "Test name 2",
+    "rsvp_limit": 115,
+    "status": "upcoming",
+    "time": 1536683400000,
+    "local_date": "2018-09-11",
+    "local_time": "17:30",
+    "updated": 1535105404000,
+    "utc_offset": 3600000,
+    "waitlist_count": 5,
+    "yes_rsvp_count": 115,
+    "venue": null,
+    "group": null,
+    "link": "",
+    "description": "Test description 2",
+    "visibility": "public"
+  }
+]
