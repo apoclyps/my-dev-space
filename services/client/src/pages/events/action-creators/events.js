@@ -21,11 +21,13 @@ export function eventsFetchDataSuccess(events) {
   };
 }
 
-export function eventsFetchData(url) {
+export function eventsFetchData(url, params) {
   return dispatch => {
     dispatch(eventsIsLoading(true));
 
-    return fetch(url)
+    const eventsURL = `${url}?page=${params.page}&location=${params.location}`;
+
+    return fetch(eventsURL)
       .then(res => {
         if (!res.ok) {
           throw Error(res.statusText);
@@ -35,5 +37,12 @@ export function eventsFetchData(url) {
       })
       .then(body => dispatch(eventsFetchDataSuccess(body)))
       .catch(() => dispatch(eventsHasErrored(true)));
+  };
+}
+
+export function eventsLocation(location) {
+  return {
+    type: Actions.EVENTS_UPDATE_LOCATION,
+    location
   };
 }
