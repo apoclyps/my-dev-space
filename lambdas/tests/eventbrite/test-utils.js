@@ -3,10 +3,13 @@ jest.mock("../../eventbrite/node_modules/aws-lambda-data-utils", () => ({
   getFromS3: jest.fn()
 }));
 
-jest.mock("../../eventbrite/utils", () =>
-  Object.assign(require.requireActual("../../eventbrite/utils"), {
-    uploadTo: jest.fn()
-  })
+jest.mock("../../eventbrite/node_modules/@muxer/lambda-utils", () =>
+  Object.assign(
+    require.requireActual("../../eventbrite/node_modules/@muxer/lambda-utils"),
+    {
+      uploadTo: jest.fn()
+    }
+  )
 );
 
 const prefix = "../../../eventbrite";

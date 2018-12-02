@@ -2,7 +2,7 @@ process.env.EVENTBRITE_API_TOKEN = "eventbrite-token-abc123";
 
 const { prefix, resolved, resolvedResponse } = require("../test-utils");
 const { getFromWeb } = require(`${prefix}/node_modules/aws-lambda-data-utils`);
-const { uploadTo } = require(`${prefix}/utils`);
+const { uploadTo } = require(`${prefix}/node_modules/@muxer/lambda-utils`);
 const producer = require(`${prefix}/handlers/producer`);
 
 const apiCallPage = page =>
@@ -44,7 +44,7 @@ describe("Eventbrite Producer", function() {
       getFromWeb.mockImplementation(() => errorResponse());
     });
 
-    it("returns an error", function(done) {
+    it("returns an error and no file paths", function(done) {
       producer.produce(event, context, function(err, response) {
         expect(err).toEqual([{ error: "test error" }]);
         expect(response).toBe(null);
@@ -73,31 +73,30 @@ describe("Eventbrite Producer", function() {
       getFromWeb.mockImplementation(() => singleResponse());
     });
 
-    it("does not return an error and returns message", function(done) {
-      producer.produce(event, context, function(err, response) {
-        expect(err).toBe(null);
-        expect(response).toEqual({ message: ["path/to/new/file.json"] });
-        done();
-      });
-    });
-
     it("makes a request to the API", function(done) {
-      producer.produce(event, context, function() {
+      producer.produce(event, context, function(err) {
         expect(getFromWeb).toHaveBeenCalledTimes(1);
         expect(getFromWeb).toHaveBeenCalledWith(apiCallPage(1));
-        done();
+        done(err);
       });
     });
 
     it("uploads data", function(done) {
-      producer.produce(event, context, function() {
+      producer.produce(event, context, function(err) {
         expect(uploadTo).toHaveBeenCalledTimes(1);
         expect(uploadTo).toHaveBeenCalledWith(
           "muxer-produced-events-eventbrite",
           expect.any(Function),
           { pagination: { has_more_items: false, page_count: 1 } }
         );
-        done();
+        done(err);
+      });
+    });
+
+    it("returns file paths", function(done) {
+      producer.produce(event, context, function(err, response) {
+        expect(response).toEqual({ message: ["path/to/new/file.json"] });
+        done(err);
       });
     });
   });
@@ -114,32 +113,18 @@ describe("Eventbrite Producer", function() {
         .mockReturnValue(finalResponse({ events: [{ name: "Last Event" }] }));
     });
 
-    it("does not return an error and returns message", function(done) {
-      producer.produce(event, context, function(err, response) {
-        expect(err).toBe(null);
-        expect(response).toEqual({
-          message: [
-            "path/to/new/file.json",
-            "path/to/new/file.json",
-            "path/to/new/file.json"
-          ]
-        });
-        done();
-      });
-    });
-
     it("makes a request to the API", function(done) {
-      producer.produce(event, context, function() {
+      producer.produce(event, context, function(err) {
         expect(getFromWeb).toHaveBeenCalledTimes(3);
         expect(getFromWeb).toHaveBeenCalledWith(apiCallPage(1));
         expect(getFromWeb).toHaveBeenCalledWith(apiCallPage(2));
         expect(getFromWeb).toHaveBeenCalledWith(apiCallPage(3));
-        done();
+        done(err);
       });
     });
 
     it("uploads data", function(done) {
-      producer.produce(event, context, function() {
+      producer.produce(event, context, function(err) {
         expect(uploadTo).toHaveBeenCalledTimes(3);
         expect(uploadTo).toHaveBeenCalledWith(
           "muxer-produced-events-eventbrite",
@@ -165,7 +150,20 @@ describe("Eventbrite Producer", function() {
             pagination: { has_more_items: false, page_count: 3 }
           }
         );
-        done();
+        done(err);
+      });
+    });
+
+    it("returns file paths", function(done) {
+      producer.produce(event, context, function(err, response) {
+        expect(response).toEqual({
+          message: [
+            "path/to/new/file.json",
+            "path/to/new/file.json",
+            "path/to/new/file.json"
+          ]
+        });
+        done(err);
       });
     });
   });
@@ -178,17 +176,6 @@ describe("Eventbrite Producer", function() {
         )
         .mockReturnValueOnce(errorResponse({ page: 2 }))
         .mockReturnValue(errorResponse({ page: 3 }));
-    });
-
-    it("return the errors", function(done) {
-      producer.produce(event, context, function(err, response) {
-        expect(err).toEqual([
-          { error: "test error", page: 2 },
-          { error: "test error", page: 3 }
-        ]);
-        expect(response).toBe(null);
-        done();
-      });
     });
 
     it("makes a request to the API", function(done) {
@@ -204,6 +191,17 @@ describe("Eventbrite Producer", function() {
     it("does not upload data", function(done) {
       producer.produce(event, context, function() {
         expect(uploadTo).not.toHaveBeenCalled();
+        done();
+      });
+    });
+
+    it("returns the errors and no file paths", function(done) {
+      producer.produce(event, context, function(err, response) {
+        expect(err).toEqual([
+          { error: "test error", page: 2 },
+          { error: "test error", page: 3 }
+        ]);
+        expect(response).toBe(null);
         done();
       });
     });

@@ -1,4 +1,4 @@
-const { addYear, convert } = require("./utils");
+const { addYear, convert } = require("@muxer/lambda-utils");
 
 const CALENDAR_ID =
   "farsetlabs.org.uk_srmqnkn373auq51u00s2nijrq8%40group.calendar.google.com";

@@ -1,10 +1,11 @@
 import configureMockStore from "redux-mock-store";
 import fetchMock from "fetch-mock";
+import moment from "moment/moment";
+import { parsedDomain } from "utils/domain";
 import thunk from "redux-thunk";
 import * as Actions from "../events";
 import * as Types from "../../actions";
 import { events } from "../../reducers/events";
-import moment from "moment/moment";
 import {
   getRecentEvents,
   getUpcomingEvents,
@@ -22,7 +23,7 @@ describe("async actions", () => {
   });
 
   it("creates EVENTS_FETCH_DATA_SUCCESS when fetching events has been done", () => {
-    fetchMock.getOnce("/events", {
+    fetchMock.get("http://localhost/events?page=1&location=belfast", {
       status: 200,
       sendAsJson: true,
       body: {
@@ -49,10 +50,11 @@ describe("async actions", () => {
         }
       }
     ];
-    const store = mockStore({ events: [] });
-    const url = "/events";
+    const store = mockStore({events: [] });
+    const url = "http://localhost/events";
+    const params = { page: 1, location: "belfast" };
 
-    return store.dispatch(Actions.eventsFetchData(url)).then(() => {
+    return store.dispatch(Actions.eventsFetchData(url, params)).then(() => {
       // return of async actions
       expect(store.getActions()).toEqual(expectedActions);
     });
@@ -120,7 +122,10 @@ describe("reducer", () => {
     upcomingEvents: [],
     recentEvents: [],
     page: 1,
-    hasMoreItems: true
+    hasMoreItems: true,
+    location: parsedDomain.subdomain,
+    url: "http://localhost/events",
+    params: { page: 1 }
   };
   it("should return the initial state", () => {
     expect(events(defaultState, {})).toEqual({
@@ -164,7 +169,8 @@ describe("reducer", () => {
       recentEvents: [updatedEvent],
       upcomingEvents: [updatedEvent],
       hasMoreItems: true,
-      page: defaultState.page + 1
+      page: 1,
+      params: { page: 2 }
     });
   });
 });

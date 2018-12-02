@@ -7,12 +7,34 @@ import Error from "components/event/error";
 import NoEvents from "components/no-events";
 import EventSeparator from "components/event-separator";
 import getBucketsFor from "utils/get-buckets-for";
+import Pagination from "components/pagination";
+import { parsedDomain } from "utils/domain";
 
 class Events extends Component {
   state = {};
 
+  componentDidMount() {
+    const { setLocation } = this.props;
+
+    if (parsedDomain) {
+      if (parsedDomain.subdomain) {
+        setLocation(parsedDomain.subdomain);
+      }
+    }
+  }
+
+  fetch = () => {
+    const { fetchData, url, params, location } = this.props;
+
+    if (location) {
+      params.location = location;
+    }
+
+    fetchData(url, params);
+  };
+
   renderRecentEvents() {
-    const { recentEvents } = this.props;
+    const { recentEvents, location } = this.props;
 
     if (!_.isArray(recentEvents)) return null;
 
@@ -22,14 +44,13 @@ class Events extends Component {
         {recentEvents.map(item => (
           <Event key={item.id} className="recent-event" content={item} />
         ))}
-        {recentEvents.length === 0 ? <NoEvents /> : null}
+        {recentEvents.length === 0 ? <NoEvents location={location} /> : null}
       </div>
     );
   }
 
   renderUpcomingEvents() {
-    const { upcomingEvents } = this.props;
-
+    const { upcomingEvents, location } = this.props;
     if (!_.isArray(upcomingEvents)) return null;
 
     const bucketedEvents = getBucketsFor(upcomingEvents);
@@ -37,7 +58,7 @@ class Events extends Component {
     return _.map(bucketedEvents, ({ id, message, className, events }) => (
       <div key={id} className={className}>
         <EventSeparator content={message} id={id} />
-        {events.length === 0 ? <NoEvents /> : null}
+        {events.length === 0 ? <NoEvents location={location} /> : null}
         {_.map(events, item => (
           <Event key={item.id} content={item} />
         ))}
@@ -63,20 +84,37 @@ class Events extends Component {
   }
 
   render() {
+    const { isLoading, hasMoreItems } = this.props;
     return (
-      <div className="page">
-        <CallToActionBanner />
-        {this.renderEvents()}
-        {this.renderError()}
-      </div>
+      <Pagination
+        fetch={this.fetch}
+        isLoading={isLoading}
+        hasMoreItems={hasMoreItems}
+      >
+        <div className="page">
+          <CallToActionBanner />
+          {this.renderEvents()}
+          {this.renderError()}
+        </div>
+      </Pagination>
     );
   }
 }
 
 Events.propTypes = {
   hasErrors: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  hasMoreItems: PropTypes.bool.isRequired,
   upcomingEvents: PropTypes.arrayOf(PropTypes.object).isRequired,
-  recentEvents: PropTypes.arrayOf(PropTypes.object).isRequired
+  recentEvents: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setLocation: PropTypes.func.isRequired,
+  fetchData: PropTypes.func.isRequired,
+  location: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  params: PropTypes.shape({
+    page: PropTypes.number.isRequired,
+    location: PropTypes.string.isRequired
+  }).isRequired
 };
 
 export default Events;

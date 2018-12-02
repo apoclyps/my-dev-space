@@ -1,0 +1,637 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Farsetlabs transformer when a new file is added to the bucket which contains complete events uploads transformed events list 1`] = `
+Array [
+  Array [
+    "muxer-transformed-events",
+    [Function],
+    Array [
+      Object {
+        "created_at": "2018-05-21T10:21:12.000Z",
+        "description": "https://www.meetup.com/CodeCoop-NI",
+        "last_updated": "2018-05-21T10:33:48.120Z",
+        "name": "Code Co-op NI",
+        "source_data": Object {
+          "id": "4b471u35laf5kgeegsjjku3lu8_20181018T180000Z",
+          "name": "farsetlabs-calendar",
+        },
+        "times": Object {
+          "duration": 7200000,
+          "end": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-18T20:00:00.000Z",
+          },
+          "start": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-18T18:00:00.000Z",
+          },
+        },
+        "topics": Array [],
+        "url": "https://www.farsetlabs.org.uk/events/#upcoming-events",
+        "venue": Object {
+          "address": "Weavers Court, Linfield Road, BT12 5GH",
+          "city": "Belfast",
+          "country": "GB",
+          "latitude": "54.592826",
+          "longitude": "-5.940666",
+          "name": "Farset Labs",
+        },
+      },
+      Object {
+        "created_at": "2017-09-19T08:01:05.000Z",
+        "description": "http://www.farsetlabs.org.uk/events/coderdojo.html",
+        "last_updated": "2017-09-19T08:01:06.267Z",
+        "name": "Farset Labs Dojo 2017",
+        "source_data": Object {
+          "id": "0mdpdpn59po7htqvf7o9bercmt_20181019T170000Z",
+          "name": "farsetlabs-calendar",
+        },
+        "times": Object {
+          "duration": 8400000,
+          "end": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-19T19:20:00.000Z",
+          },
+          "start": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-19T17:00:00.000Z",
+          },
+        },
+        "topics": Array [],
+        "url": "https://www.farsetlabs.org.uk/events/#upcoming-events",
+        "venue": Object {
+          "address": "Weavers Court, Linfield Road, BT12 5GH",
+          "city": "Belfast",
+          "country": "GB",
+          "latitude": "54.592826",
+          "longitude": "-5.940666",
+          "name": "Farset Labs",
+        },
+      },
+      Object {
+        "created_at": "2018-08-10T19:01:39.000Z",
+        "description": "Halloween Cyber Security Challenge (Because vulnerability is scary)
+Code Co-op: https://www.meetup.com/CodeCoop-NI/
+Contact Zoe or Art for more details.",
+        "last_updated": "2018-08-10T19:04:21.794Z",
+        "name": "Code Co-op: Halloween Cyber-Security Challenge",
+        "source_data": Object {
+          "id": "316kag8mfr56qt58k3guo4ejsr",
+          "name": "farsetlabs-calendar",
+        },
+        "times": Object {
+          "duration": 10800000,
+          "end": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-30T21:00:00.000Z",
+          },
+          "start": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-30T18:00:00.000Z",
+          },
+        },
+        "topics": Array [],
+        "url": "https://www.farsetlabs.org.uk/events/#upcoming-events",
+        "venue": Object {
+          "address": "Weavers Court, Linfield Road, BT12 5GH",
+          "city": "Belfast",
+          "country": "GB",
+          "latitude": "54.592826",
+          "longitude": "-5.940666",
+          "name": "Farset Labs",
+        },
+      },
+      Object {
+        "created_at": "2013-10-29T11:11:12.000Z",
+        "description": " ",
+        "last_updated": "2016-09-25T16:33:30.395Z",
+        "name": "Town Hall",
+        "source_data": Object {
+          "id": "sh66lg4mn4uj77a3nk7odiep14_20181105T190000Z",
+          "name": "farsetlabs-calendar",
+        },
+        "times": Object {
+          "duration": 7200000,
+          "end": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-11-05T21:00:00.000Z",
+          },
+          "start": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-11-05T19:00:00.000Z",
+          },
+        },
+        "topics": Array [],
+        "url": "https://www.farsetlabs.org.uk/events/#upcoming-events",
+        "venue": Object {
+          "address": "Weavers Court, Linfield Road, BT12 5GH",
+          "city": "Belfast",
+          "country": "GB",
+          "latitude": "54.592826",
+          "longitude": "-5.940666",
+          "name": "Farset Labs",
+        },
+      },
+      Object {
+        "created_at": "2018-10-05T07:04:40.000Z",
+        "description": "Details TBC",
+        "last_updated": "2018-10-05T07:04:43.673Z",
+        "name": "Design Science [Belfast Design Week]",
+        "source_data": Object {
+          "id": "0f6joijanqo2do55253lp6a6hh",
+          "name": "farsetlabs-calendar",
+        },
+        "times": Object {
+          "duration": 7200000,
+          "end": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-11-08T21:00:00.000Z",
+          },
+          "start": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-11-08T19:00:00.000Z",
+          },
+        },
+        "topics": Array [],
+        "url": "https://www.farsetlabs.org.uk/events/#upcoming-events",
+        "venue": Object {
+          "address": "Weavers Court, Linfield Road, BT12 5GH",
+          "city": "Belfast",
+          "country": "GB",
+          "latitude": "54.592826",
+          "longitude": "-5.940666",
+          "name": "Farset Labs",
+        },
+      },
+    ],
+  ],
+]
+`;
+
+exports[`Farsetlabs transformer when a new file is added to the bucket which contains incomplete events uploads transformed events list, without incomplete events 1`] = `
+Array [
+  Array [
+    "muxer-transformed-events",
+    [Function],
+    Array [
+      Object {
+        "created_at": "2018-05-21T10:21:12.000Z",
+        "description": "https://www.meetup.com/CodeCoop-NI",
+        "last_updated": "2018-05-21T10:33:48.120Z",
+        "name": "Code Co-op NI",
+        "source_data": Object {
+          "id": "4b471u35laf5kgeegsjjku3lu8_20181018T180000Z",
+          "name": "farsetlabs-calendar",
+        },
+        "times": Object {
+          "duration": 7200000,
+          "end": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-18T20:00:00.000Z",
+          },
+          "start": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-18T18:00:00.000Z",
+          },
+        },
+        "topics": Array [],
+        "url": "https://www.farsetlabs.org.uk/events/#upcoming-events",
+        "venue": Object {
+          "address": "Weavers Court, Linfield Road, BT12 5GH",
+          "city": "Belfast",
+          "country": "GB",
+          "latitude": "54.592826",
+          "longitude": "-5.940666",
+          "name": "Farset Labs",
+        },
+      },
+      Object {
+        "created_at": "2017-09-19T08:01:05.000Z",
+        "description": "http://www.farsetlabs.org.uk/events/coderdojo.html",
+        "last_updated": "2017-09-19T08:01:06.267Z",
+        "name": "Farset Labs Dojo 2017",
+        "source_data": Object {
+          "id": "0mdpdpn59po7htqvf7o9bercmt_20181019T170000Z",
+          "name": "farsetlabs-calendar",
+        },
+        "times": Object {
+          "duration": 8400000,
+          "end": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-19T19:20:00.000Z",
+          },
+          "start": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-19T17:00:00.000Z",
+          },
+        },
+        "topics": Array [],
+        "url": "https://www.farsetlabs.org.uk/events/#upcoming-events",
+        "venue": Object {
+          "address": "Weavers Court, Linfield Road, BT12 5GH",
+          "city": "Belfast",
+          "country": "GB",
+          "latitude": "54.592826",
+          "longitude": "-5.940666",
+          "name": "Farset Labs",
+        },
+      },
+      Object {
+        "created_at": "2018-08-10T19:01:39.000Z",
+        "description": "Halloween Cyber Security Challenge (Because vulnerability is scary)
+Code Co-op: https://www.meetup.com/CodeCoop-NI/
+Contact Zoe or Art for more details.",
+        "last_updated": "2018-08-10T19:04:21.794Z",
+        "name": "Code Co-op: Halloween Cyber-Security Challenge",
+        "source_data": Object {
+          "id": "316kag8mfr56qt58k3guo4ejsr",
+          "name": "farsetlabs-calendar",
+        },
+        "times": Object {
+          "duration": 10800000,
+          "end": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-30T21:00:00.000Z",
+          },
+          "start": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-30T18:00:00.000Z",
+          },
+        },
+        "topics": Array [],
+        "url": "https://www.farsetlabs.org.uk/events/#upcoming-events",
+        "venue": Object {
+          "address": "Weavers Court, Linfield Road, BT12 5GH",
+          "city": "Belfast",
+          "country": "GB",
+          "latitude": "54.592826",
+          "longitude": "-5.940666",
+          "name": "Farset Labs",
+        },
+      },
+      Object {
+        "created_at": "2018-10-05T07:04:40.000Z",
+        "description": "Details TBC",
+        "last_updated": "2018-10-05T07:04:43.673Z",
+        "name": "Design Science [Belfast Design Week]",
+        "source_data": Object {
+          "id": "0f6joijanqo2do55253lp6a6hh",
+          "name": "farsetlabs-calendar",
+        },
+        "times": Object {
+          "duration": 7200000,
+          "end": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-11-08T21:00:00.000Z",
+          },
+          "start": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-11-08T19:00:00.000Z",
+          },
+        },
+        "topics": Array [],
+        "url": "https://www.farsetlabs.org.uk/events/#upcoming-events",
+        "venue": Object {
+          "address": "Weavers Court, Linfield Road, BT12 5GH",
+          "city": "Belfast",
+          "country": "GB",
+          "latitude": "54.592826",
+          "longitude": "-5.940666",
+          "name": "Farset Labs",
+        },
+      },
+    ],
+  ],
+]
+`;
+
+exports[`Farsetlabs transformer when multiple new files are added to the bucket uploads transformed events lists 1`] = `
+Array [
+  Array [
+    "muxer-transformed-events",
+    [Function],
+    Array [
+      Object {
+        "created_at": "2018-05-21T10:21:12.000Z",
+        "description": "https://www.meetup.com/CodeCoop-NI",
+        "last_updated": "2018-05-21T10:33:48.120Z",
+        "name": "Code Co-op NI",
+        "source_data": Object {
+          "id": "4b471u35laf5kgeegsjjku3lu8_20181018T180000Z",
+          "name": "farsetlabs-calendar",
+        },
+        "times": Object {
+          "duration": 7200000,
+          "end": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-18T20:00:00.000Z",
+          },
+          "start": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-18T18:00:00.000Z",
+          },
+        },
+        "topics": Array [],
+        "url": "https://www.farsetlabs.org.uk/events/#upcoming-events",
+        "venue": Object {
+          "address": "Weavers Court, Linfield Road, BT12 5GH",
+          "city": "Belfast",
+          "country": "GB",
+          "latitude": "54.592826",
+          "longitude": "-5.940666",
+          "name": "Farset Labs",
+        },
+      },
+      Object {
+        "created_at": "2017-09-19T08:01:05.000Z",
+        "description": "http://www.farsetlabs.org.uk/events/coderdojo.html",
+        "last_updated": "2017-09-19T08:01:06.267Z",
+        "name": "Farset Labs Dojo 2017",
+        "source_data": Object {
+          "id": "0mdpdpn59po7htqvf7o9bercmt_20181019T170000Z",
+          "name": "farsetlabs-calendar",
+        },
+        "times": Object {
+          "duration": 8400000,
+          "end": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-19T19:20:00.000Z",
+          },
+          "start": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-19T17:00:00.000Z",
+          },
+        },
+        "topics": Array [],
+        "url": "https://www.farsetlabs.org.uk/events/#upcoming-events",
+        "venue": Object {
+          "address": "Weavers Court, Linfield Road, BT12 5GH",
+          "city": "Belfast",
+          "country": "GB",
+          "latitude": "54.592826",
+          "longitude": "-5.940666",
+          "name": "Farset Labs",
+        },
+      },
+      Object {
+        "created_at": "2018-08-10T19:01:39.000Z",
+        "description": "Halloween Cyber Security Challenge (Because vulnerability is scary)
+Code Co-op: https://www.meetup.com/CodeCoop-NI/
+Contact Zoe or Art for more details.",
+        "last_updated": "2018-08-10T19:04:21.794Z",
+        "name": "Code Co-op: Halloween Cyber-Security Challenge",
+        "source_data": Object {
+          "id": "316kag8mfr56qt58k3guo4ejsr",
+          "name": "farsetlabs-calendar",
+        },
+        "times": Object {
+          "duration": 10800000,
+          "end": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-30T21:00:00.000Z",
+          },
+          "start": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-30T18:00:00.000Z",
+          },
+        },
+        "topics": Array [],
+        "url": "https://www.farsetlabs.org.uk/events/#upcoming-events",
+        "venue": Object {
+          "address": "Weavers Court, Linfield Road, BT12 5GH",
+          "city": "Belfast",
+          "country": "GB",
+          "latitude": "54.592826",
+          "longitude": "-5.940666",
+          "name": "Farset Labs",
+        },
+      },
+      Object {
+        "created_at": "2013-10-29T11:11:12.000Z",
+        "description": " ",
+        "last_updated": "2016-09-25T16:33:30.395Z",
+        "name": "Town Hall",
+        "source_data": Object {
+          "id": "sh66lg4mn4uj77a3nk7odiep14_20181105T190000Z",
+          "name": "farsetlabs-calendar",
+        },
+        "times": Object {
+          "duration": 7200000,
+          "end": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-11-05T21:00:00.000Z",
+          },
+          "start": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-11-05T19:00:00.000Z",
+          },
+        },
+        "topics": Array [],
+        "url": "https://www.farsetlabs.org.uk/events/#upcoming-events",
+        "venue": Object {
+          "address": "Weavers Court, Linfield Road, BT12 5GH",
+          "city": "Belfast",
+          "country": "GB",
+          "latitude": "54.592826",
+          "longitude": "-5.940666",
+          "name": "Farset Labs",
+        },
+      },
+      Object {
+        "created_at": "2018-10-05T07:04:40.000Z",
+        "description": "Details TBC",
+        "last_updated": "2018-10-05T07:04:43.673Z",
+        "name": "Design Science [Belfast Design Week]",
+        "source_data": Object {
+          "id": "0f6joijanqo2do55253lp6a6hh",
+          "name": "farsetlabs-calendar",
+        },
+        "times": Object {
+          "duration": 7200000,
+          "end": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-11-08T21:00:00.000Z",
+          },
+          "start": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-11-08T19:00:00.000Z",
+          },
+        },
+        "topics": Array [],
+        "url": "https://www.farsetlabs.org.uk/events/#upcoming-events",
+        "venue": Object {
+          "address": "Weavers Court, Linfield Road, BT12 5GH",
+          "city": "Belfast",
+          "country": "GB",
+          "latitude": "54.592826",
+          "longitude": "-5.940666",
+          "name": "Farset Labs",
+        },
+      },
+    ],
+  ],
+  Array [
+    "muxer-transformed-events",
+    [Function],
+    Array [
+      Object {
+        "created_at": "2018-05-21T10:21:12.000Z",
+        "description": "https://www.meetup.com/CodeCoop-NI",
+        "last_updated": "2018-05-21T10:33:48.120Z",
+        "name": "Code Co-op NI",
+        "source_data": Object {
+          "id": "4b471u35laf5kgeegsjjku3lu8_20181018T180000Z",
+          "name": "farsetlabs-calendar",
+        },
+        "times": Object {
+          "duration": 7200000,
+          "end": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-18T20:00:00.000Z",
+          },
+          "start": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-18T18:00:00.000Z",
+          },
+        },
+        "topics": Array [],
+        "url": "https://www.farsetlabs.org.uk/events/#upcoming-events",
+        "venue": Object {
+          "address": "Weavers Court, Linfield Road, BT12 5GH",
+          "city": "Belfast",
+          "country": "GB",
+          "latitude": "54.592826",
+          "longitude": "-5.940666",
+          "name": "Farset Labs",
+        },
+      },
+      Object {
+        "created_at": "2017-09-19T08:01:05.000Z",
+        "description": "http://www.farsetlabs.org.uk/events/coderdojo.html",
+        "last_updated": "2017-09-19T08:01:06.267Z",
+        "name": "Farset Labs Dojo 2017",
+        "source_data": Object {
+          "id": "0mdpdpn59po7htqvf7o9bercmt_20181019T170000Z",
+          "name": "farsetlabs-calendar",
+        },
+        "times": Object {
+          "duration": 8400000,
+          "end": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-19T19:20:00.000Z",
+          },
+          "start": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-19T17:00:00.000Z",
+          },
+        },
+        "topics": Array [],
+        "url": "https://www.farsetlabs.org.uk/events/#upcoming-events",
+        "venue": Object {
+          "address": "Weavers Court, Linfield Road, BT12 5GH",
+          "city": "Belfast",
+          "country": "GB",
+          "latitude": "54.592826",
+          "longitude": "-5.940666",
+          "name": "Farset Labs",
+        },
+      },
+      Object {
+        "created_at": "2018-08-10T19:01:39.000Z",
+        "description": "Halloween Cyber Security Challenge (Because vulnerability is scary)
+Code Co-op: https://www.meetup.com/CodeCoop-NI/
+Contact Zoe or Art for more details.",
+        "last_updated": "2018-08-10T19:04:21.794Z",
+        "name": "Code Co-op: Halloween Cyber-Security Challenge",
+        "source_data": Object {
+          "id": "316kag8mfr56qt58k3guo4ejsr",
+          "name": "farsetlabs-calendar",
+        },
+        "times": Object {
+          "duration": 10800000,
+          "end": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-30T21:00:00.000Z",
+          },
+          "start": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-10-30T18:00:00.000Z",
+          },
+        },
+        "topics": Array [],
+        "url": "https://www.farsetlabs.org.uk/events/#upcoming-events",
+        "venue": Object {
+          "address": "Weavers Court, Linfield Road, BT12 5GH",
+          "city": "Belfast",
+          "country": "GB",
+          "latitude": "54.592826",
+          "longitude": "-5.940666",
+          "name": "Farset Labs",
+        },
+      },
+      Object {
+        "created_at": "2013-10-29T11:11:12.000Z",
+        "description": " ",
+        "last_updated": "2016-09-25T16:33:30.395Z",
+        "name": "Town Hall",
+        "source_data": Object {
+          "id": "sh66lg4mn4uj77a3nk7odiep14_20181105T190000Z",
+          "name": "farsetlabs-calendar",
+        },
+        "times": Object {
+          "duration": 7200000,
+          "end": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-11-05T21:00:00.000Z",
+          },
+          "start": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-11-05T19:00:00.000Z",
+          },
+        },
+        "topics": Array [],
+        "url": "https://www.farsetlabs.org.uk/events/#upcoming-events",
+        "venue": Object {
+          "address": "Weavers Court, Linfield Road, BT12 5GH",
+          "city": "Belfast",
+          "country": "GB",
+          "latitude": "54.592826",
+          "longitude": "-5.940666",
+          "name": "Farset Labs",
+        },
+      },
+      Object {
+        "created_at": "2018-10-05T07:04:40.000Z",
+        "description": "Details TBC",
+        "last_updated": "2018-10-05T07:04:43.673Z",
+        "name": "Design Science [Belfast Design Week]",
+        "source_data": Object {
+          "id": "0f6joijanqo2do55253lp6a6hh",
+          "name": "farsetlabs-calendar",
+        },
+        "times": Object {
+          "duration": 7200000,
+          "end": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-11-08T21:00:00.000Z",
+          },
+          "start": Object {
+            "timezone": "Europe/London",
+            "utc": "2018-11-08T19:00:00.000Z",
+          },
+        },
+        "topics": Array [],
+        "url": "https://www.farsetlabs.org.uk/events/#upcoming-events",
+        "venue": Object {
+          "address": "Weavers Court, Linfield Road, BT12 5GH",
+          "city": "Belfast",
+          "country": "GB",
+          "latitude": "54.592826",
+          "longitude": "-5.940666",
+          "name": "Farset Labs",
+        },
+      },
+    ],
+  ],
+]
+`;

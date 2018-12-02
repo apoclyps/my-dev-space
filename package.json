@@ -2,10 +2,10 @@
   "name": "my-dev-space",
   "devDependencies": {
     "all-contributors-cli": "^5.4.1",
-    "danger": "^6.0.5",
-    "husky": "^1.1.3",
+    "danger": "^6.1.8",
+    "husky": "^1.2.0",
     "randomstring": "^1.1.5",
-    "testcafe": "^0.23.0"
+    "testcafe": "^0.23.2"
   },
   "scripts": {
     "contributors:add": "all-contributors add",

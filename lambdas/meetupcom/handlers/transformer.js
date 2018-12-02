@@ -3,10 +3,10 @@
 const path = require("path");
 const striptags = require("striptags");
 const { getFromS3, getListFromS3 } = require("aws-lambda-data-utils");
+const { uploadTo } = require("@muxer/lambda-utils");
 const { validate } = require("jsonschema");
-const eventSchema = require("./schemas/event-schema");
+const eventSchema = require("@muxer/event-schema");
 const { buckets } = require("../config");
-const { uploadTo } = require("../utils");
 
 const meetupGroupsFilePrefix = "meetupcom-groups__";
 const meetupGroupsDirectory = "groups-events";
