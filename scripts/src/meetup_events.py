@@ -13,6 +13,7 @@ MEETUP_API_TOKEN = os.getenv("MEETUP_API_TOKEN")
 MEETUP_MEMBER_ID = os.getenv("MEETUP_MEMBER_ID")
 EVENTS_ENDPOINT = os.getenv("EVENTS_ENDPOINT")
 LOCATION = os.getenv("LOCATION")
+MEETUP_MEMBER_ID = os.getenv("MEETUP_MEMBER_ID")
 
 client = meetup.api.Client(MEETUP_API_TOKEN)
 
@@ -59,7 +60,7 @@ def _transform_event(event):
 
     return {
         "name": event["name"],
-        "description": event["description"],
+        "description": event["description"] if "description" in event else "",
         "url": event["event_url"],
         "start": start,
         "end": end,

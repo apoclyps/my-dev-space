@@ -6,8 +6,9 @@ import requests
 import json
 
 EVENTS_ENDPOINT = os.getenv("EVENTS_ENDPOINT")
+LOCATION = os.getenv("LOCATION")
 
-FARSET_LABS_CALENDAR = "https://www.googleapis.com/calendar/v3/calendars/farsetlabs.org.uk_srmqnkn373auq51u00s2nijrq8%40group.calendar.google.com/events?timeMin=2018-08-06T20%3A52%3A10.536127Z&maxResults=50&singleEvents=true&orderBy=startTime&key=AIzaSyAqmyUSbK13EX58WDExY9LN4VXZecI9wB8&alt=json"
+FARSET_LABS_CALENDAR = "https://www.googleapis.com/calendar/v3/calendars/farsetlabs.org.uk_srmqnkn373auq51u00s2nijrq8%40group.calendar.google.com/events?timeMin=2018-12-01T20%3A52%3A10.536127Z&maxResults=250&singleEvents=true&orderBy=startTime&key=AIzaSyAqmyUSbK13EX58WDExY9LN4VXZecI9wB8&alt=json"
 
 
 def get_events():
@@ -34,8 +35,16 @@ def _transform_event(event):
         return
 
     created = event["created"]
-    start = event["start"]["dateTime"]
-    end = event["end"]["dateTime"]
+
+    if "dateTime" not in event["start"]:
+        start = event["start"]["date"]
+    else:
+        start = event["start"]["dateTime"]
+
+    if "dateTime" not in event["end"]:
+        end = event["end"]["date"]
+    else:
+        end = event["end"]["dateTime"]
 
     # TODO calculate duration fo event
     duration = 10000
@@ -51,12 +60,15 @@ def _transform_event(event):
         "entry": ["free"],
         "category": event["organizer"]["displayName"],
         "source": "farsetlabs",
-        "location": "belfast",
+        "location": LOCATION.lower(),
     }
 
 
 def _post_payloads(payloads):
     responses = []
+
+    print(f"POSTING TO {EVENTS_ENDPOINT}")
+
     for payload in payloads:
         r = requests.post(
             EVENTS_ENDPOINT,
