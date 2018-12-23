@@ -26,6 +26,14 @@ def extract_enteries(entries):
     return [Entry(type=str(entry)) for entry in entries if entry]
 
 
+def existing_match_from_name(name, start):
+    return Event.query.filter_by(name=name, start=start).first()
+
+
+def existing_match_from_source_id(source, source_id):
+    return Event.query.filter_by(source=source, source_id=source_id).first()
+
+
 @events_blueprint.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
@@ -40,6 +48,7 @@ def index():
         entry = request.form["entry"]
         category = request.form["category"]
         source = request.form["source"]
+        source_id = request.form["source_id"]
 
         topic_list = extract_topics(topics)
 
@@ -55,6 +64,7 @@ def index():
             location=location,
             category=category,
             source=source,
+            source_id=source_id,
         )
 
         db.session.add(event)
@@ -88,36 +98,42 @@ def add_event():
     entries = post_data.get("entry")
     category = post_data.get("category")
     source = post_data.get("source")
+    source_id = post_data.get("source_id")
 
     topics_list = extract_topics(topics)
     entry_list = extract_enteries(entries)
 
+    if existing_match_from_name(name, start):
+        response_object["message"] = "Event with name and start already exists."
+        return jsonify(response_object), 202
+
+    if source_id and existing_match_from_source_id(source, source_id):
+        response_object["message"] = "Event from with source id already exists."
+        return jsonify(response_object), 202
+
     try:
-        event = Event.query.filter_by(name=name, start=start).first()
-        if not event:
-            event = Event(
-                name=name,
-                description=description,
-                url=url,
-                start=start,
-                end=end,
-                duration=duration,
-                topics=topics_list,
-                entry=entry_list,
-                location=location,
-                category=category,
-                source=source,
-            )
-            db.session.add(event)
-            db.session.commit()
+        event = Event(
+            name=name,
+            description=description,
+            url=url,
+            start=start,
+            end=end,
+            duration=duration,
+            topics=topics_list,
+            entry=entry_list,
+            location=location,
+            category=category,
+            source=source,
+            source_id=source_id,
+        )
+        db.session.add(event)
+        db.session.commit()
 
-            response_object["status"] = "success"
-            response_object["message"] = f"{name} was added!"
+        response_object["status"] = "success"
+        response_object["message"] = f"{name} was added!"
 
-            return jsonify(response_object), 201
-        else:
-            response_object["message"] = "Sorry. That id already exists."
-            return jsonify(response_object), 202
+        return jsonify(response_object), 201
+
     except (exc.IntegrityError, ValueError):
         db.session.rollback()
         return jsonify(response_object), 400

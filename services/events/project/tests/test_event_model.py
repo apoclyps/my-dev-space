@@ -25,6 +25,7 @@ class TestEventModel(BaseTestCase):
             entry=[entry],
             category="test category",
             source="test",
+            source_id=None,
             location="belfast",
         )
         db.session.add(event)
