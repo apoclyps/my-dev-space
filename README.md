@@ -58,7 +58,8 @@ $ docker-compose -f docker-compose-dev.yml run events-service python manage.py d
 To load data into the service for development, the recommended solution is to use the load script within the `scripts` folder to populate the local database. Details on how to configure the script can be found in [`scripts/README.md`](scripts/README.md)\.
 
 ```sh
-`./load_data.sh dev`
+$ cd scripts/
+$ ./load_data.sh dev
 ```
 
 And to tear down the local development stack, simply run:
@@ -178,4 +179,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ### Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
-

@@ -8,7 +8,7 @@ The following scripts ingest from 3rd party sites, transform the data, and send 
 You need to have python 3.6.6, and pipenv installed to run each script; the following commands will allow you to check both your python and pipenv version.
 
 ```
-$ python -v
+$ python --version
 $ pipenv
 ```
 
@@ -61,4 +61,6 @@ View http://localhost and you should now see a list of events
 
 To load data from all sources, you can run the following shell scripts with an environment flag
 
-`./test.sh dev`
+```sh
+./load_data.sh dev
+```

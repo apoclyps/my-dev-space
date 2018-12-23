@@ -54,7 +54,7 @@ def _post_payloads(payloads):
             headers={"Content-type": "application/json"},
             data=json.dumps(payload),
         )
-        print(r.status_code)
+        print(r.text)
         responses.append(r)
 
 
