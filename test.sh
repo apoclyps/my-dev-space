@@ -77,16 +77,6 @@ CI=true docker-compose -f $file run client-test npm test -- --coverage
 inspect $? $image
 section_end $image
 
-# Lambdas
-image='lambdas-test'
-section_start $image
-build $image
-docker-compose -f $file run $image npm run lint
-inspect $? lambdas-lint
-docker-compose -f $file run $image npm test
-inspect $? $image
-section_end $image
-
 # Integration tests
 section_start 'integration-test'
 if [[ "${env}" != "stage" ]]; then

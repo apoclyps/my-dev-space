@@ -1,8 +1,0 @@
-{
-  "errors": [
-    {
-      "code": "auth_fail",
-      "message": "Invalid signature"
-    }
-  ]
-}
