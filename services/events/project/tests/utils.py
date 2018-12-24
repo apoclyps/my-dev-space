@@ -18,6 +18,7 @@ def add_event(
     channel,
     category,
     source,
+    source_id,
 ):
     event = Event(
         name=name,
@@ -32,6 +33,7 @@ def add_event(
         channel=channel,
         category=category,
         source=source,
+        source_id=source_id,
     )
     db.session.add(event)
     db.session.commit()

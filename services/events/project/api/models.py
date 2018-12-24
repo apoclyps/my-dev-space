@@ -170,6 +170,7 @@ class Event(OutputMixin, db.Model):
     updated = Column(db.DateTime, default=datetime.utcnow, nullable=False)
     deleted = Column(db.DateTime, nullable=True)
     source = Column(db.String(50), nullable=False)
+    source_id = Column(db.String(256), nullable=True)
 
     def __init__(
         self,
@@ -183,6 +184,7 @@ class Event(OutputMixin, db.Model):
         entry,
         category,
         source,
+        source_id,
         location,
     ):
         self.name = name
@@ -195,6 +197,7 @@ class Event(OutputMixin, db.Model):
         self.entry = entry
         self.category = category
         self.source = source
+        self.source_id = source_id
         self.location = location
 
 
