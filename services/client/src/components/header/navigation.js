@@ -6,37 +6,6 @@ const Navigation = () => (
   <ul>
     <style jsx>{styles}</style>
     {linkStyles.styles}
-    <li>
-      <Link to="/event" className={`navigation-link ${linkStyles.className}`}>
-        events
-      </Link>
-    </li>
-    <li>
-      <Link
-        to="/calendar"
-        className={`navigation-link ${linkStyles.className}`}
-      >
-        calendar
-      </Link>
-    </li>
-    <li>
-      <Link to="/video" className={`navigation-link ${linkStyles.className}`}>
-        videos
-      </Link>
-    </li>
-    <li style={{ display: "none" }}>
-      <Link to="/speaker" className={`navigation-link ${linkStyles.className}`}>
-        speakers
-      </Link>
-    </li>
-    <li style={{ display: "none" }}>
-      <Link
-        to="/developer"
-        className={`navigation-link ${linkStyles.className}`}
-      >
-        developers
-      </Link>
-    </li>
   </ul>
 );
 

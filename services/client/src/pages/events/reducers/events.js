@@ -6,7 +6,7 @@ const defaultState = {
   upcomingEvents: [],
   recentEvents: [],
   hasMoreItems: true,
-  url: `${process.env.REACT_APP_EVENTS_SERVICE_URL}/events`,
+  url: `http://muxer-events.s3-website-us-east-1.amazonaws.com/`,
   params: { page: 1, location: "belfast" },
   location: "belfast"
 };

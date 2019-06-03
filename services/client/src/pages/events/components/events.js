@@ -89,7 +89,7 @@ class Events extends Component {
   renderEvents() {
     return (
       <div>
-        {this.renderRecentEvents()}
+        {/* {this.renderRecentEvents()} */}
         {this.renderUpcomingEvents()}
       </div>
     );
